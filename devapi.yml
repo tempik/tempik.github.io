@@ -8,59 +8,59 @@ info:
     email: A.Tenyakov@t1-group.ru
   license:
     name: Apache 2.0
-    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-host: http://176.112.216.95:50501
+    "url: 'http"://www.apache.org/licenses/LICENSE-2.0.html'
+"host: http://176.112.216.95":50501
 tags:
   - name: Packages In Date Range
     description: Получение телематических данных
     externalDocs:
       description: Просмотреть метод можно по 
-      url: http://176.112.216.95:50501
+      "url: http://176.112.216.95":50501
   - name: Crash Records
     description: Получение данных о ДТП
     externalDocs:
       description: Просмотреть метод можно по 
-      url: http://176.112.216.95:50501
+      "url: http://176.112.216.95":50501
   - name: Device Location
     description: Получение местоположения указанных ТМУ
     externalDocs:
       description: Просмотреть метод можно по 
-      url: http://176.112.216.95:50501
+      "url: http://176.112.216.95":50501
   - name: Track Recording
     description: Отправка команд на ТМУ для включения/отключения записи трека ТС
     externalDocs:
       description: Просмотреть метод можно по 
-      url: http://176.112.216.95:50501
+      "url: http://176.112.216.95":50501
   - name: Track Recorded Packages
     description: Получение записей трека для TС
     externalDocs:
       description: Просмотреть метод можно по 
-      url: http://176.112.216.95:50501  
+      "url: http://176.112.216.95":50501  
   - name: Telematic laststate
     description: Получение координат объекта или группы объектов с историей за определенный период времени
     externalDocs:
       description: Просмотреть метод можно по
-      url: http://176.112.216.95:50501
+      "url: http://176.112.216.95":50501
   - name: Telematic
     description: Получение координат объекта или группы объектов 
     externalDocs:
       description: Просмотреть метод можно по
-      url: http://176.112.216.95:50501
+      "url: http://176.112.216.95":50501
   - name: Bydevicecodes
     description: Получение информации об объекте или группе объектов
     externalDocs:
       description: Просмотреть метод можно по
-      url: http://176.112.216.95:50501
+      "url: http://176.112.216.95":50501
   - name: Package
     description: Обработка данных с устройства или нескольких устройств за указанный промежуток времени
     externalDocs:
       description: Просмотреть метод можно по
-      url: http://176.112.216.95:50501
+      "url: http://176.112.216.95":50501
   - name: Countpackage
     description:  Количество обработанных пакетов за указанный период времени
     externalDocs:
       description: Просмотреть метод можно по
-      url: http://176.112.216.95:50501
+      "url: http://176.112.216.95":50501
 paths:
   /Api/telematicparsingelement/Package?deviceCode=&start=&end=&limit:
     get:
@@ -534,12 +534,12 @@ components:
           type: string
           format: date-time
           description: Дата и время ТМУ в момент отправки пакета
-          example: '2017-10-21T02:41:52Z' 
+          "example: '2017-10-21T02:41":52Z' 
         ReceivedTime:
           type: string
           format: date-time
           description: Дата и время сервера в момент записи пакета
-          example: '2017-10-21T06:38:48.212Z'
+          "example: '2017-10-21T06:38":48.212Z'
         DeviceCode:
           type: string
           description: Код ТМУ
@@ -628,12 +628,12 @@ components:
           type: string
           format: date-time
           description: Дата и время ТМУ в момент отправки пакета
-          example: '2017-10-20T14:32:57Z' 
+          "example: '2017-10-20T14:32":57Z' 
         ReceivedTime:
           type: string
           format: date-time
           description: Дата и время сервера в момент записи пакета
-          example: '2017-10-20T15:16:37.775Z'
+          "example: '2017-10-20T15:16":37.775Z'
         DeviceCode:
           type: string
           description: Код ТМУ
@@ -701,12 +701,12 @@ components:
           type: string
           format: date-time
           description: Дата и время ТМУ в момент отправки пакета
-          example: '2017-10-21T02:41:52Z' 
+          "example: '2017-10-21T02:41":52Z' 
         ReceivedTime:
           type: string
           format: date-time
           description: Дата и время сервера в момент записи пакета
-          example: '2017-10-21T06:38:48.212Z'
+          "example: '2017-10-21T06:38":48.212Z'
         DeviceCode:
           type: string
           description: Код ТМУ
@@ -796,12 +796,12 @@ components:
           type: string
           format: date-time
           description: Дата и время ТМУ в момент отправки пакета
-          example: '2017-10-21T02:41:52Z' 
+          "example: '2017-10-21T02:41":52Z' 
         ReceivedTime:
           type: string
           format: date-time
           description: Дата и время сервера в момент записи пакета
-          example: '2017-10-21T06:38:48.212Z'
+          "example: '2017-10-21T06:38":48.212Z'
         DeviceCode:
           type: string
           description: Код ТМУ
@@ -1002,12 +1002,12 @@ components:
           type: string
           format: date-time
           description: Время устройства
-          example: '2018-03-28T16:21:09Z'
+          "example: '2018-03-28T16:21":09Z'
         receivedTime:
           type: string
           format: date-time
           description: Полученное время
-          example: '2018-03-28T16:21:16.364Z'
+          "example: '2018-03-28T16:21":16.364Z'
         version:
           type: string
           description: Версия 
@@ -1432,7 +1432,7 @@ components:
           type: string
           format: date-time
           description: Время создания
-          example: '2018-02-01T14:02:52Z'
+          "example: '2018-02-01T14:02":52Z'
       xml:
         name: DeviceId
     ExtendedData:
@@ -1539,15 +1539,15 @@ components:
           type: boolean
           description: Цифровой вход 2
           example: false
-        Geopos:VDOP:
+        "Geopos:VDOP":
           type: integer
           description: 
           example: 87
-        Geopos:HDOP:
+        "Geopos:HDOP":
           type: integer
           description: 
           example: 63 
-        Geopos:PDOP:
+        "Geopos:PDOP":
           type: integer
           description: 
           example: 108
@@ -1564,7 +1564,7 @@ components:
           type: integer
           description: Количество спутников
           example: 18
-        Geopos:Altitude meters:
+        "Geopos:Altitude meters":
           type: integer
           description: Показание датчика высоты в метрах
           example: 148
@@ -1600,7 +1600,7 @@ components:
           type: string
           format: date-time
           description: Время создания
-          example: '2018-01-12T21:10:42Z'
+          "example: '2018-01-12T21:10":42Z'
       xml:
         name: Xgeo_Goezones
     Bydevicecodes:
@@ -1656,12 +1656,12 @@ components:
           type: string
           format: date-time
           description: Начала обработки большого количества девайсов/данных 
-          example: "2018-03-28T00:00:00"
+          "example: "2018-03-28T00:00":00"
         end:
           type: string
           format: date-time
           description: Конец обработки большого количества девайсов/данных
-          example: "2018-03-28T14:00:00"
+          "example: "2018-03-28T14:00":00"
         deviceCode:
           type: string
           description: Код устройства
@@ -1702,12 +1702,12 @@ components:
           type: string
           format: date-time
           description: Время на устройстве
-          example: '2018-03-27T21:01:07Z'
+          "example: '2018-03-27T21:01":07Z'
         serverTime:
           type: string
           format: date-time
           description: Время на сервере
-          example: '2018-03-27T21:01:13.835Z'
+          "example: '2018-03-27T21:01":13.835Z'
         endPoint:
           type: string
           description: Конечная точка
@@ -1767,21 +1767,21 @@ components:
           items:
             type: boolean
             example: false
-        Geopos:VDOP:
+        "Geopos:VDOP":
           type: array
           description:
           items:
             type: integer
             format: int64
           example: 145
-        Geopos:HDOP:
+        "Geopos:HDOP":
           type: array
           description: 
           items:
             type: integer
             format: int64
             example: 82
-        Geopos:PDOP:
+        "Geopos:PDOP":
           type: array
           description: 
           items:
@@ -1852,12 +1852,12 @@ components:
           type: string
           format: date-time
           description: Начала обработки 
-          example: "2018-03-28T00:00:00"
+          "example: "2018-03-28T00:00":00"
         end:
           type: string
           format: date-time
           description: Конец обработки 
-          example: "2018-03-28T14:00:00"
+          "example: "2018-03-28T14:00":00"
         deviceCode:
           type: string
           description: Код устройства
@@ -1898,12 +1898,12 @@ components:
           type: string
           format: date-time
           description: Время на устройстве
-          example: '2018-03-27T21:01:07Z'
+          "example: '2018-03-27T21:01":07Z'
         serverTime:
           type: string
           format: date-time
           description: Дата и время записи данных на сервере
-          example: '2018-03-27T21:01:13.835Z'
+          "example: '2018-03-27T21:01":13.835Z'
         endPoint:
           type: string
           description: Парсер обработки данных
@@ -1978,131 +1978,131 @@ components:
         EgtsSdrTypes
         Guid]
       properties:
-        Device:Moving:
+        "Device:Moving":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Data sent from archive:
+        "Device:Data sent from archive":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Geopos:Incorrect сoordinates:
+        "Geopos:Incorrect сoordinates":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Geopos:Total mileage:
+        "Geopos:Total mileage":
           type: array
           items:
             $ref: '#/components/schemas/DeviceValue'
-        Device:Plug 1 status:
+        "Device:Plug 1 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Plug 2 status:
+        "Device:Plug 2 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Plug 3 status:
+        "Device:Plug 3 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Plug 4 status:
+        "Device:Plug 4 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Plug 5 status:
+        "Device:Plug 5 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Plug 6 status:
+        "Device:Plug 6 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Plug 7 status:
+        "Device:Plug 7 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Plug 8 status:
+        "Device:Plug 8 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Geopos:VDOP:
+        "Geopos:VDOP":
           type: array
           items:
             $ref: '#/components/schemas/Geopos'
-        Device:GLONASS positioning used:
+        "Device:GLONASS positioning used":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:GPS positioning used:
+        "Device:GPS positioning used":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Output plug 1 status:
+        "Device:Output plug 1 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Output plug 2 status:
+        "Device:Output plug 2 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Output plug 3 status:
+        "Device:Output plug 3 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Output plug 4 status:
+        "Device:Output plug 4 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Output plug 5 status:
+        "Device:Output plug 5 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Output plug 6 status:
+        "Device:Output plug 6 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Output plug 7 status:
+        "Device:Output plug 7 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Output plug 8 status:
+        "Device:Output plug 8 status":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        Device:Plug 1 counter:
+        "Device:Plug 1 counter":
           type: array
           items:
             $ref: '#/components/schemas/DeviceValue'
-        Device:Plug 2 counter:
+        "Device:Plug 2 counter":
           type: array
           items:
             $ref: '#/components/schemas/DeviceValue'
-        Device:Plug 3 counter:
+        "Device:Plug 3 counter":
           type: array
           items:
             $ref: '#/components/schemas/DeviceValue'
-        Device:Accelerometer X:
+        "Device:Accelerometer X":
           type: array
           items:
             $ref: '#/components/schemas/DeviceValue'
-        Device:Accelerometer Y:
+        "Device:Accelerometer Y":
           type: array
           items:
             $ref: '#/components/schemas/DeviceValue'
-        Device:Accelerometer Z:
+        "Device:Accelerometer Z":
           type: array
           items:
             $ref: '#/components/schemas/DeviceValue'
-        LLS 0:Error reading value:
+        LLS "0:Error reading value":
           type: array
           items:
             $ref: '#/components/schemas/Device'
-        LLS 0:Level:
+        LLS "0:Level":
           type: array
           items:
             $ref: '#/components/schemas/DeviceValue'
-        LLS 1:Error reading value:
+        LLS "1:Error reading value":
           type: array
           items:
             $ref: '#/components/schemas/Device'
@@ -2266,7 +2266,7 @@ components:
           type: float
           example: 0.01
       xml:
-        name: Geopos:VDOP    
+        name: "Geopos:VDOP"
     hexString:
       type: object
       required: [
