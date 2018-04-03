@@ -81,13 +81,13 @@ paths:
           description: Локальное время начала периода в формате POSIX-время. Время клиента
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: end
           in: query
           description: Локальное время окончания периода в формате POSIX-время. Время клиента
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: limit
           in: query
           description: Кол-во записей, полученных за один запрос
@@ -125,13 +125,13 @@ paths:
           description: Время начала периода в формате POSIX-время. Время клиента
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: end
           in: query
           description: Время окончания периода в формате POSIX-время. Время клиента
           required: true
           schema:
-            type: dateTime
+            type: string
       responses:
         '200':
           content:
@@ -185,25 +185,25 @@ paths:
           description: Дата и время начала периода в формате POSIX-время. Время клиента
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: to
           in: query
           description: Дата и время окончания периода в формате POSIX-время. Время клиента
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: limit
           in: query
           description: Ограничение по максимальному числу позиций
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: skip
           in: query
           description: Количество пропущенных позиций относительно начала списка позиций
           required: true
           schema:
-            type: dateTime
+            type: string
       responses:
         '200':
           content:
@@ -251,25 +251,25 @@ paths:
           description: Дата и время начала периода в формате POSIX-время. Время клиента
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: to
           in: query
           description: Дата и время окончания периода в формате POSIX-время. Время клиента
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: limit
           in: query
           description: Ограничение по максимальному числу позиций
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: skip
           in: query
           description: Количество пропущенных позиций относительно начала списка позиций
           required: true
           schema:
-            type: dateTime
+            type: string
       responses:
         '200':
           content:
@@ -291,13 +291,13 @@ paths:
           description: Дата и время начала периода в формате POSIX-время. Время клиента
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: to
           in: query
           description: Дата и время окончания периода в формате POSIX-время. Время клиента
           required: true
           schema:
-            type: dateTime
+            type: string
       responses:
         '200':
           content:
@@ -344,13 +344,13 @@ paths:
           description: Время отчета "от"
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: to
           in: query
           description: Время отчета "до"
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: deviceCodes
           in: query
           description: Код устройства
@@ -408,13 +408,13 @@ paths:
           description: Время начала отчета 
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: end
           in: query
           description: Время окончания отчета
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: deviceCodes
           in: query
           description: Код устройства
@@ -447,13 +447,13 @@ paths:
           description: Дата начала периода
           required: true
           schema:
-            type: dateTime
+            type: string
         - name: end
           in: query
           description: Дата окончания периода
           required: true
           schema:
-           type: dateTime
+           type: string
         - name: deviceCodes
           in: query
           description: Код устройства или группы устройств
