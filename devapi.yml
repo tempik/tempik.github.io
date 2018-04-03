@@ -995,7 +995,6 @@ components:
         version:
           type: string
           description: Версия 
-          example: null
         deviceCode:
           type: string
           description: Код устройства
@@ -1036,7 +1035,6 @@ components:
           description: Объекты на карте 
         hasRoadEvents:
           type: string
-          example: null
         longitude:
           type: float
           description: Координаты долготы
@@ -1096,7 +1094,6 @@ components:
         accelerationX:
           type: float
           description: Значение ускорения по оси Х в mG
-          example: null
         accelerationX_upd:
           type: boolean
           description: Старое занчение по оси Х, если false, иначе true
@@ -1104,7 +1101,6 @@ components:
         accelerationY:
           type: float
           description: Значение ускорения по оси У в mG
-          example: null
         accelerationY_upd:
           type: boolean
           description: Старое занчение по оси У, если false, иначе true
@@ -1112,7 +1108,6 @@ components:
         accelerationDurationX:
           type: float
           description: Значение продолжительности ускорения по оси Х в мсек, обнуляется после того, как прекращается воздействие ускорения по оси Х
-          example: null
         accelerationDurationX_upd:
           type: boolean
           description: Если true, то ускорение по оси Х не равно 0, продолжает накапливаться показатель продолжительности ускорения accelerationDurationX, иначе false
@@ -1120,7 +1115,6 @@ components:
         accelerationDurationY:
           type: float
           description: Значение продолжительности ускорения по оси У в мсек, обнуляется после того, как прекращается воздействие ускорения по оси У
-          example: null
         accelerationDurationY_upd:
           type: boolean
           description: Если true, то ускорение по оси У не равно 0, продолжает накапливаться показатель продолжительности ускорения accelerationDurationY, иначе false
@@ -1128,7 +1122,6 @@ components:
         fuelLevel:
           type: float
           description: Уровень топлива в баке в литрах
-          example: null
         fuelLevel_upd:
           type: boolean
           description: Если true, то показатель fuelLevel обновлен, иначе false
@@ -1136,7 +1129,6 @@ components:
         fuelCAN:
           type: float
           description: Уровень топлива CAN в литрах
-          example: null
         fuelCAN_upd:
           type: boolean
           description: Если true, то показатель fuelCAN обновлен, иначе false
@@ -1144,7 +1136,6 @@ components:
         fuelSpent:
           type: float
           description: Расход топлива в баке в литрах
-          example: null
         fuelSpent_upd:
           type: boolean
           description: Если true, то показатель расхода топлива fuelSpent обновлен, иначе false
@@ -1152,7 +1143,6 @@ components:
         fuel:
           type: float
           description: Пользовательский уровень топлива в баке в литрах. Пользователь может отметить каккой - то датчик, как основной, с него будет взят данный показатель
-          example: null
         fuel_upd:
           type: boolean
           description: Если true, то показатель пользовательского уровня топлива fuel обновлен, иначе false
@@ -1160,7 +1150,6 @@ components:
         fuelLevel2:
           type: float
           description: Дополнительный вход для подключения датчика для определения уровня топлива в баке в литрах
-          example: null
         fuelLevel2_upd:
           type: boolean
           description: Если true, то показатель fuelLevel2 обновлен, иначе false
@@ -1168,7 +1157,6 @@ components:
         fuelLevel3:
           type: float
           description: Дополнительный вход для подключения датчика для определения уровня топлива в баке в литрах
-          example: null
         fuelLevel3_upd:
           type: boolean
           description: Если true, то показатель fuelLevel2 обновлен, иначе false
@@ -1176,7 +1164,6 @@ components:
         geoLocationSignalLevel:
           type: integer
           description: Уровень сигнала GPS
-          example: null
         geoLocationSignalLevel_upd:
           type: boolean
           description: Если true, то уровень сигнала GPS обновлен, иначе false
@@ -1184,7 +1171,6 @@ components:
         gsmSignalLevel:
           type: integer
           description: Cигнала мобильной связи
-          example: null
         gsmSignalLevel_upd:
           type: boolean
           description: Если true, то уровень сигнала мобильной связи обновлен, иначе false
@@ -1192,7 +1178,6 @@ components:
         voltage:
           type: integer
           description: Напряжение питания в В
-          example: null
         voltage_upd:
           type: boolean
           description: Если значение напряжения питания обновлено, то true, иначе false
@@ -1200,7 +1185,6 @@ components:
         voltageAlarm:
           type: integer
           description: Падение напряжения питания в В
-          example: null
         voltageAlarm_upd:
           type: boolean
           description: Если значение падения напряжения питания обновлено, то true, иначе false
@@ -1208,7 +1192,6 @@ components:
         batteryLevel:
           type: integer
           description: Значение уровня заряда батарейки
-          example: null
         batteryLevel_upd:
           type: boolean
           description: Если значение уровня заряда батарейки обновлено, то true, иначе false
@@ -1216,7 +1199,6 @@ components:
         batteryLevelAlarm:
           type: integer
           description: Значение падения уровня заряда батарейки
-          example: null
         batteryLevelAlarm_upd:
           type: boolean
           description: Если значение падения уровня заряда батарейки обновлено, то true, иначе false
@@ -1224,7 +1206,6 @@ components:
         doorsSignal:
           type: boolean
           description: Датчик дверей (закрыто/открыто)
-          example: null
         doorsSignal_upd:
           type: boolean
           description: Если значение с датчика дверей обновлено, то true, иначе false
@@ -1232,7 +1213,6 @@ components:
         hoodSignal:
           type: boolean
           description: Датчик капота (закрыто/открыто)
-          example: null
         hoodSignal_upd:
           type: boolean
           description: Если значение с датчика капота обновлено, то true, иначе false
@@ -1240,7 +1220,6 @@ components:
         trunkSignal:
           type: boolean
           description: Датчик багажника (закрыто/открыто)
-          example: null
         trunkSignal_upd:
           type: boolean
           description: Если значение с датчика багажника обновлено, то true, иначе false
@@ -1248,7 +1227,6 @@ components:
         rpm:
           type: integer
           description: Значение оборот двигателя в минуту
-          example: null
         rpm_upd:
           type: boolean
           description: Если значение оборотов двигателя обновлено, то true, иначе false
@@ -1256,7 +1234,6 @@ components:
         temperature1:
           type: integer
           description: Значение с датчик температуры в градусах
-          example: null
         temperature1_upd:
           type: boolean
           description: Если значение с датчик температуры обновлено, то true, иначе false
@@ -1264,7 +1241,6 @@ components:
         temperature2:
           type: integer
           description: Значение с датчик температуры в градусах
-          example: null
         temperature2_upd:
           type: boolean
           description: Если значение с датчик температуры обновлено, то true, иначе false
@@ -1272,7 +1248,6 @@ components:
         temperature3:
           type: integer
           description: Значение с датчик температуры в градусах
-          example: null
         temperature3_upd:
           type: boolean
           description: Если значение с датчик температуры обновлено, то true, иначе false
@@ -1280,7 +1255,6 @@ components:
         odometr:
           type: integer
           description: Пробег в км, зависящий от оборотов двигателя
-          example: null
         odometr_upd:
           type: boolean
           description: Если значение пробега odometr обновлено, то true, иначе false
@@ -1288,7 +1262,6 @@ components:
         panicButton:
           type: boolean
           description: Кнопка тревоги (включена/не включена)
-          example: null
         panicButton_upd:
           type: boolean
           description: Если значение panicButton не обновлено, то false, иначе true
@@ -1296,7 +1269,6 @@ components:
         button1:
           type: boolean
           description: Кнопка для присоединения любого вида датчика
-          example: null
         button1_upd:
           type: boolean
           description: Если значение button1 не обновлено, то false, иначе true
@@ -1304,7 +1276,6 @@ components:
         button2:
           type: boolean
           description: Кнопка для присоединения любого вида датчика
-          example: null
         button2_upd:
           type: boolean
           description: Если значение button2 не обновлено, то false, иначе true
@@ -1312,7 +1283,6 @@ components:
         button3:
           type: boolean
           description: Кнопка для присоединения любого вида датчика
-          example: null
         button3_upd:
           type: boolean
           description: Если значение button3 не обновлено, то false, иначе true
@@ -1320,7 +1290,6 @@ components:
         button4:
           type: boolean
           description: Кнопка для присоединения любого вида датчика
-          example: null
         button4_upd:
           type: boolean
           description: Если значение button4 не обновлено, то false, иначе true
@@ -1328,7 +1297,6 @@ components:
         heaterSignal:
           type: integer
           description: Температура подогрева в градусах
-          example: null
         heaterSignal_upd:
           type: boolean
           description: Если значение температуры подогрева не обновлено, то false, иначе true
@@ -1336,7 +1304,6 @@ components:
         leftBackDoor:
           type: boolean
           description: Датчик левой задней двери (дверь открыта/дверь закрыта)
-          example: null
         leftBackDoor_upd:
           type: boolean
           description: Если значение датчика левой задней двери не обновлено, то false, иначе true
@@ -1344,7 +1311,6 @@ components:
         leftFrontDoor:
           type: boolean
           description: Датчик левой передней двери (дверь открыта/дверь закрыта)
-          example: null
         leftFrontDoor_upd:
           type: boolean
           description: Если значение датчика левой передней двери не обновлено, то false, иначе true
@@ -1352,7 +1318,6 @@ components:
         rightBackDoor:
           type: boolean
           description: Датчик правой задней двери (дверь открыта/дверь закрыта)
-          example: null
         rightBackDoor_upd:
           type: boolean
           description: Если значение датчика правой задней двери не обновлено, то false, иначе true
@@ -1360,7 +1325,6 @@ components:
         rightFrontDoor:
           type: boolean
           description: Датчик правой передней двери (дверь открыта/дверь закрыта)
-          example: null
         rightFrontDoor_upd:
           type: boolean
           description: Если значение датчика правой передней двери не обновлено, то false, иначе true
@@ -1595,11 +1559,9 @@ components:
         vinCode:
           type: string
           description: Идентификационный номер транспортного средства
-          example: null
         garageNumber:
           type: string
           description: Гаражный номер транспортного средства
-          example: null
         description:
           type: string
           description: Краткое описание
@@ -1686,7 +1648,6 @@ components:
         imei:
           type: string
           description: 
-          example: null
       xml:
         name: Packages
     ParsedPacket:
@@ -1882,7 +1843,6 @@ components:
         imei:
           type: string
           description: IMEI ТМУ
-          example: null
       xml:
         name: PackagesT
     ParsedPacketT:
@@ -2162,15 +2122,12 @@ components:
         duration:
           description: Продолжительность 
           type: float
-          example: null
         durationX:
           description: Продолжительность по Х 
           type: float
-          example: null
         durationY:
           description: Продолжительность по У
           type: float
-          example: null
       xml:
         name: AccelerationData
     AnalogSensor:
