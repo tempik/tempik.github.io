@@ -82,12 +82,14 @@ paths:
           required: true
           schema:
             type: string
+            format: date-time
         - name: end
           in: query
           description: Локальное время окончания периода в формате POSIX-время. Время клиента
           required: true
           schema:
             type: string
+            format: date-time
         - name: limit
           in: query
           description: Кол-во записей, полученных за один запрос
@@ -126,12 +128,14 @@ paths:
           required: true
           schema:
             type: string
+            format: date-time
         - name: end
           in: query
           description: Время окончания периода в формате POSIX-время. Время клиента
           required: true
           schema:
             type: string
+            format: date-time
       responses:
         '200':
           content:
@@ -186,24 +190,28 @@ paths:
           required: true
           schema:
             type: string
+            format: date-time
         - name: to
           in: query
           description: Дата и время окончания периода в формате POSIX-время. Время клиента
           required: true
           schema:
             type: string
+            format: date-time
         - name: limit
           in: query
           description: Ограничение по максимальному числу позиций
           required: true
           schema:
             type: string
+            format: date-time
         - name: skip
           in: query
           description: Количество пропущенных позиций относительно начала списка позиций
           required: true
           schema:
             type: string
+            format: date-time
       responses:
         '200':
           content:
@@ -252,24 +260,28 @@ paths:
           required: true
           schema:
             type: string
+            format: date-time
         - name: to
           in: query
           description: Дата и время окончания периода в формате POSIX-время. Время клиента
           required: true
           schema:
             type: string
+            format: date-time
         - name: limit
           in: query
           description: Ограничение по максимальному числу позиций
           required: true
           schema:
             type: string
+            format: date-time
         - name: skip
           in: query
           description: Количество пропущенных позиций относительно начала списка позиций
           required: true
           schema:
             type: string
+            format: date-time
       responses:
         '200':
           content:
@@ -292,12 +304,14 @@ paths:
           required: true
           schema:
             type: string
+            format: date-time
         - name: to
           in: query
           description: Дата и время окончания периода в формате POSIX-время. Время клиента
           required: true
           schema:
             type: string
+            format: date-time
       responses:
         '200':
           content:
@@ -345,12 +359,14 @@ paths:
           required: true
           schema:
             type: string
+            format: date-time
         - name: to
           in: query
           description: Время отчета "до"
           required: true
           schema:
             type: string
+            format: date-time
         - name: deviceCodes
           in: query
           description: Код устройства
@@ -409,12 +425,14 @@ paths:
           required: true
           schema:
             type: string
+            format: date-time
         - name: end
           in: query
           description: Время окончания отчета
           required: true
           schema:
             type: string
+            format: date-time
         - name: deviceCodes
           in: query
           description: Код устройства
@@ -448,12 +466,14 @@ paths:
           required: true
           schema:
             type: string
+            format: date-time
         - name: end
           in: query
           description: Дата окончания периода
           required: true
           schema:
            type: string
+           format: date-time
         - name: deviceCodes
           in: query
           description: Код устройства или группы устройств
@@ -512,17 +532,16 @@ components:
       properties:
         DeviceTime:
           type: string
-          format: dateTime
+          format: date-time
           description: Дата и время ТМУ в момент отправки пакета
           example: '2017-10-21T02:41:52Z' 
         ReceivedTime:
           type: string
-          format: dateTime
+          format: date-time
           description: Дата и время сервера в момент записи пакета
           example: '2017-10-21T06:38:48.212Z'
         DeviceCode:
           type: string
-          format: dateTime
           description: Код ТМУ
           example: "510038"
         Longitude:
@@ -607,17 +626,16 @@ components:
       properties:
         DeviceTime:
           type: string
-          format: dateTime
+          format: date-time
           description: Дата и время ТМУ в момент отправки пакета
           example: '2017-10-20T14:32:57Z' 
         ReceivedTime:
           type: string
-          format: dateTime
+          format: date-time
           description: Дата и время сервера в момент записи пакета
           example: '2017-10-20T15:16:37.775Z'
         DeviceCode:
           type: string
-          format: dateTime
           description: Код ТМУ
           example: '431572'
         Longitude:
@@ -681,19 +699,18 @@ components:
       properties:
         DeviceTime:
           type: string
-          format: dateTime
+          format: date-time
           description: Дата и время ТМУ в момент отправки пакета
           example: '2017-10-21T02:41:52Z' 
         ReceivedTime:
           type: string
-          format: dateTime
+          format: date-time
           description: Дата и время сервера в момент записи пакета
           example: '2017-10-21T06:38:48.212Z'
         DeviceCode:
           type: string
-          format: dateTime
           description: Код ТМУ
-          example: "510038"
+          example: '510038'
         Longitude:
           type: integer
           description: Долгота
@@ -777,17 +794,16 @@ components:
       properties:
         DeviceTime:
           type: string
-          format: dateTime
+          format: date-time
           description: Дата и время ТМУ в момент отправки пакета
           example: '2017-10-21T02:41:52Z' 
         ReceivedTime:
           type: string
-          format: dateTime
+          format: date-time
           description: Дата и время сервера в момент записи пакета
           example: '2017-10-21T06:38:48.212Z'
         DeviceCode:
           type: string
-          format: dateTime
           description: Код ТМУ
           example: "510038"
         Longitude:
@@ -984,17 +1000,18 @@ components:
           example: 2ae94199-a428-470f-8c60-b4a5ac25c6cb
         deviceTime:
           type: string
-          format: dateTime
+          format: date-time
           description: Время устройства
           example: '2018-03-28T16:21:09Z'
         receivedTime:
           type: string
-          format: dateTime
+          format: date-time
           description: Полученное время
           example: '2018-03-28T16:21:16.364Z'
         version:
           type: string
           description: Версия 
+          example: null
         deviceCode:
           type: string
           description: Код устройства
@@ -1014,15 +1031,18 @@ components:
           description: Адрес местонахожения объекта
           example: г. Москва, ш. Дмитровское, д.108, стр.2
         xgeo_Speedlimit:
-          type: float
+          type: number 
+          format: float
           description: Ограничение скорости, которое определяется по карте
           example: 20
         xdelta_Distance:
-          type: float
+          type: number 
+          format: float
           description: Расчетное значение пробега по координатам
           example: 0
         xdelta_Mileage:
-          type: float
+          type: number 
+          format: float
           description: Пробег с CAN или ДУТ в зависимости от настройки маппинга в км
           example: 1813707.94
         xgeo_Goezones:
@@ -1035,8 +1055,10 @@ components:
           description: Объекты на карте 
         hasRoadEvents:
           type: string
+          example: null
         longitude:
-          type: float
+          type: number 
+          format: float
           description: Координаты долготы
           example: 37.547721862792969
         longitude_upd:
@@ -1044,7 +1066,8 @@ components:
           description: Координаты обновлены, если true; старое значение координат, если false 
           example: true
         latitude:
-          type: float
+          type: number 
+          format: float
           description: Координаты широты
           example: 55.886238098144531
         latitude_upd:
@@ -1060,7 +1083,8 @@ components:
           description: Статус зажигания не обновлен, если false; иначе true
           example: true
         course:
-          type: float
+          type: number 
+          format: float
           description: Значение по курсу в градусах
           example: 285
         course_upd:
@@ -1068,7 +1092,8 @@ components:
           description: Значение по курсу обновлено, если true; иначе false
           example: true
         mileage:
-          type: float
+          type: number 
+          format: float
           description: Значение пробега к км
           example: 20542318
         mileage_upd:
@@ -1076,7 +1101,8 @@ components:
           description: Значение пробега обновлено, если true; иначе false
           example: true
         satellites:
-          type: float
+          type: number 
+          format: float
           description: Количество спутников, с которых поступает информация
           example: 18
         satellites_upd:
@@ -1084,7 +1110,8 @@ components:
           description: Значение количества спутников обнавлено, если true, наче false
           example: true
         speed:
-          type: float
+          type: number 
+          format: float
           description: Значение скорости в км/час
           example: 0
         speed_upd:
@@ -1092,71 +1119,92 @@ components:
           description: Обновленное значение скорости, если true, иначе false
           example: true
         accelerationX:
-          type: float
+          type: number 
+          format: float
           description: Значение ускорения по оси Х в mG
+          example: null
         accelerationX_upd:
           type: boolean
           description: Старое занчение по оси Х, если false, иначе true
           example: false
         accelerationY:
-          type: float
+          type: number 
+          format: float
           description: Значение ускорения по оси У в mG
+          example: null
         accelerationY_upd:
           type: boolean
           description: Старое занчение по оси У, если false, иначе true
           example: false
         accelerationDurationX:
-          type: float
+          type: number 
+          format: float
           description: Значение продолжительности ускорения по оси Х в мсек, обнуляется после того, как прекращается воздействие ускорения по оси Х
+          example: null
         accelerationDurationX_upd:
           type: boolean
           description: Если true, то ускорение по оси Х не равно 0, продолжает накапливаться показатель продолжительности ускорения accelerationDurationX, иначе false
           example: false
         accelerationDurationY:
-          type: float
+          type: number 
+          format: float
           description: Значение продолжительности ускорения по оси У в мсек, обнуляется после того, как прекращается воздействие ускорения по оси У
+          example: null
         accelerationDurationY_upd:
           type: boolean
           description: Если true, то ускорение по оси У не равно 0, продолжает накапливаться показатель продолжительности ускорения accelerationDurationY, иначе false
           example: false
         fuelLevel:
-          type: float
+          type: number 
+          format: float
           description: Уровень топлива в баке в литрах
+          example: null
         fuelLevel_upd:
-          type: boolean
+          type: number 
+          format: float
           description: Если true, то показатель fuelLevel обновлен, иначе false
           example: false
         fuelCAN:
-          type: float
+          type: number 
+          format: float
           description: Уровень топлива CAN в литрах
+          example: null
         fuelCAN_upd:
           type: boolean
           description: Если true, то показатель fuelCAN обновлен, иначе false
           example: false
         fuelSpent:
-          type: float
+          type: number 
+          format: float
           description: Расход топлива в баке в литрах
+          example: null
         fuelSpent_upd:
           type: boolean
           description: Если true, то показатель расхода топлива fuelSpent обновлен, иначе false
           example: false
         fuel:
-          type: float
+          type: number 
+          format: float
           description: Пользовательский уровень топлива в баке в литрах. Пользователь может отметить каккой - то датчик, как основной, с него будет взят данный показатель
+          example: null
         fuel_upd:
           type: boolean
           description: Если true, то показатель пользовательского уровня топлива fuel обновлен, иначе false
           example: false
         fuelLevel2:
-          type: float
+          type: number 
+          format: float
           description: Дополнительный вход для подключения датчика для определения уровня топлива в баке в литрах
+          example: null
         fuelLevel2_upd:
           type: boolean
           description: Если true, то показатель fuelLevel2 обновлен, иначе false
           example: false
         fuelLevel3:
-          type: float
+          type: number 
+          format: float
           description: Дополнительный вход для подключения датчика для определения уровня топлива в баке в литрах
+          example: null
         fuelLevel3_upd:
           type: boolean
           description: Если true, то показатель fuelLevel2 обновлен, иначе false
@@ -1164,6 +1212,7 @@ components:
         geoLocationSignalLevel:
           type: integer
           description: Уровень сигнала GPS
+          example: null
         geoLocationSignalLevel_upd:
           type: boolean
           description: Если true, то уровень сигнала GPS обновлен, иначе false
@@ -1171,6 +1220,7 @@ components:
         gsmSignalLevel:
           type: integer
           description: Cигнала мобильной связи
+          example: null
         gsmSignalLevel_upd:
           type: boolean
           description: Если true, то уровень сигнала мобильной связи обновлен, иначе false
@@ -1178,6 +1228,7 @@ components:
         voltage:
           type: integer
           description: Напряжение питания в В
+          example: null
         voltage_upd:
           type: boolean
           description: Если значение напряжения питания обновлено, то true, иначе false
@@ -1185,6 +1236,7 @@ components:
         voltageAlarm:
           type: integer
           description: Падение напряжения питания в В
+          example: null
         voltageAlarm_upd:
           type: boolean
           description: Если значение падения напряжения питания обновлено, то true, иначе false
@@ -1192,6 +1244,7 @@ components:
         batteryLevel:
           type: integer
           description: Значение уровня заряда батарейки
+          example: null
         batteryLevel_upd:
           type: boolean
           description: Если значение уровня заряда батарейки обновлено, то true, иначе false
@@ -1199,6 +1252,7 @@ components:
         batteryLevelAlarm:
           type: integer
           description: Значение падения уровня заряда батарейки
+          example: null
         batteryLevelAlarm_upd:
           type: boolean
           description: Если значение падения уровня заряда батарейки обновлено, то true, иначе false
@@ -1206,6 +1260,7 @@ components:
         doorsSignal:
           type: boolean
           description: Датчик дверей (закрыто/открыто)
+          example: null
         doorsSignal_upd:
           type: boolean
           description: Если значение с датчика дверей обновлено, то true, иначе false
@@ -1213,6 +1268,7 @@ components:
         hoodSignal:
           type: boolean
           description: Датчик капота (закрыто/открыто)
+          example: null
         hoodSignal_upd:
           type: boolean
           description: Если значение с датчика капота обновлено, то true, иначе false
@@ -1220,6 +1276,7 @@ components:
         trunkSignal:
           type: boolean
           description: Датчик багажника (закрыто/открыто)
+          example: null
         trunkSignal_upd:
           type: boolean
           description: Если значение с датчика багажника обновлено, то true, иначе false
@@ -1227,6 +1284,7 @@ components:
         rpm:
           type: integer
           description: Значение оборот двигателя в минуту
+          example: null
         rpm_upd:
           type: boolean
           description: Если значение оборотов двигателя обновлено, то true, иначе false
@@ -1234,6 +1292,7 @@ components:
         temperature1:
           type: integer
           description: Значение с датчик температуры в градусах
+          example: null
         temperature1_upd:
           type: boolean
           description: Если значение с датчик температуры обновлено, то true, иначе false
@@ -1241,6 +1300,7 @@ components:
         temperature2:
           type: integer
           description: Значение с датчик температуры в градусах
+          example: null
         temperature2_upd:
           type: boolean
           description: Если значение с датчик температуры обновлено, то true, иначе false
@@ -1248,6 +1308,7 @@ components:
         temperature3:
           type: integer
           description: Значение с датчик температуры в градусах
+          example: null
         temperature3_upd:
           type: boolean
           description: Если значение с датчик температуры обновлено, то true, иначе false
@@ -1255,6 +1316,7 @@ components:
         odometr:
           type: integer
           description: Пробег в км, зависящий от оборотов двигателя
+          example: null
         odometr_upd:
           type: boolean
           description: Если значение пробега odometr обновлено, то true, иначе false
@@ -1262,6 +1324,7 @@ components:
         panicButton:
           type: boolean
           description: Кнопка тревоги (включена/не включена)
+          example: null
         panicButton_upd:
           type: boolean
           description: Если значение panicButton не обновлено, то false, иначе true
@@ -1269,6 +1332,7 @@ components:
         button1:
           type: boolean
           description: Кнопка для присоединения любого вида датчика
+          example: null
         button1_upd:
           type: boolean
           description: Если значение button1 не обновлено, то false, иначе true
@@ -1276,6 +1340,7 @@ components:
         button2:
           type: boolean
           description: Кнопка для присоединения любого вида датчика
+          example: null
         button2_upd:
           type: boolean
           description: Если значение button2 не обновлено, то false, иначе true
@@ -1283,6 +1348,7 @@ components:
         button3:
           type: boolean
           description: Кнопка для присоединения любого вида датчика
+          example: null
         button3_upd:
           type: boolean
           description: Если значение button3 не обновлено, то false, иначе true
@@ -1290,6 +1356,7 @@ components:
         button4:
           type: boolean
           description: Кнопка для присоединения любого вида датчика
+          example: null
         button4_upd:
           type: boolean
           description: Если значение button4 не обновлено, то false, иначе true
@@ -1297,6 +1364,7 @@ components:
         heaterSignal:
           type: integer
           description: Температура подогрева в градусах
+          example: null
         heaterSignal_upd:
           type: boolean
           description: Если значение температуры подогрева не обновлено, то false, иначе true
@@ -1304,6 +1372,7 @@ components:
         leftBackDoor:
           type: boolean
           description: Датчик левой задней двери (дверь открыта/дверь закрыта)
+          example: null
         leftBackDoor_upd:
           type: boolean
           description: Если значение датчика левой задней двери не обновлено, то false, иначе true
@@ -1311,6 +1380,7 @@ components:
         leftFrontDoor:
           type: boolean
           description: Датчик левой передней двери (дверь открыта/дверь закрыта)
+          example: null
         leftFrontDoor_upd:
           type: boolean
           description: Если значение датчика левой передней двери не обновлено, то false, иначе true
@@ -1318,6 +1388,7 @@ components:
         rightBackDoor:
           type: boolean
           description: Датчик правой задней двери (дверь открыта/дверь закрыта)
+          example: null
         rightBackDoor_upd:
           type: boolean
           description: Если значение датчика правой задней двери не обновлено, то false, иначе true
@@ -1325,6 +1396,7 @@ components:
         rightFrontDoor:
           type: boolean
           description: Датчик правой передней двери (дверь открыта/дверь закрыта)
+          example: null
         rightFrontDoor_upd:
           type: boolean
           description: Если значение датчика правой передней двери не обновлено, то false, иначе true
@@ -1349,7 +1421,7 @@ components:
           example: 15217655
         pid:
           type: integer
-          description: пид-регулятор
+          description: Пид-регулятор
           example: 8948
         increment:
           type: integer
@@ -1399,7 +1471,8 @@ components:
           description: Пробег по ТМУ в км
           example: 20542318
         Analog_11_0:
-          type: float
+          type: number 
+          format: float
           description: 
           example: 25029
         Analog_0_0:
@@ -1483,7 +1556,8 @@ components:
           description: 
           example: false
         xdelta_Mileage:
-          type: flout
+          type: number 
+          format: float
           description: Пробег с CAN или ДУТ в зависимости от настройки маппинга в км
           example: 1813707.94
         Satellites:
@@ -1559,9 +1633,11 @@ components:
         vinCode:
           type: string
           description: Идентификационный номер транспортного средства
+          example: null
         garageNumber:
           type: string
           description: Гаражный номер транспортного средства
+          example: null
         description:
           type: string
           description: Краткое описание
@@ -1648,6 +1724,7 @@ components:
         imei:
           type: string
           description: 
+          example: null
       xml:
         name: Packages
     ParsedPacket:
@@ -1725,17 +1802,17 @@ components:
       properties:
         longitude:
           description: Значение координаты по долготе
-          type: float
-          format: float 
+          type: number 
+          format: float
           example: 37.778011322021484
         latitude:
           description: Значение координаты по широте
-          type: float
+          type: number 
           format: float 
           example: 55.797771453857422
         altitude:
           description: Значение высоты над уровнем моря
-          type: float
+          type: number 
           format: float 
           example: 149
         speed:
@@ -1843,6 +1920,7 @@ components:
         imei:
           type: string
           description: IMEI ТМУ
+          example: null
       xml:
         name: PackagesT
     ParsedPacketT:
@@ -2071,17 +2149,18 @@ components:
       properties:
         longitude:
           description: Значение координаты по долготе
-          type: float
-          format: float 
+          type: number 
+          format: float
           example: 37.778011322021484
         latitude:
           description: Значение координаты по широте
-          type: float
+          type: number 
           format: float 
           example: 55.797771453857422
         altitude:
           description: Значение высоты над уровнем моря
-          type: float
+          type: number 
+          format: float
           example: 149
         speed:
           description: Значение скорости 
@@ -2109,25 +2188,34 @@ components:
       properties:
         x:
           description: Ускорение по X
-          type: float
+          type: number 
+          format: float
           example: 0
         y:
           description: Ускорение по Y
-          type: float 
+          type: number 
+          format: float
           example: 0
         z:
           description: Ускорение по Z
-          type: float 
+          type: number 
+          format: float
           example: 0
         duration:
           description: Продолжительность 
-          type: float
+          type: number 
+          format: float
+          example: null
         durationX:
           description: Продолжительность по Х 
-          type: float
+          type: number 
+          format: float
+          example: null
         durationY:
           description: Продолжительность по У
-          type: float
+          type: number 
+          format: float
+          example: null
       xml:
         name: AccelerationData
     AnalogSensor:
@@ -2146,7 +2234,7 @@ components:
           example: 0
       xml:
         name: AnalogSensor
-    Device:
+    Device::
       type: object
       required: [
         Value]
