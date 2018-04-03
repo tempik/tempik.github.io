@@ -8,59 +8,59 @@ info:
     email: A.Tenyakov@t1-group.ru
   license:
     name: Apache 2.0
-    "url: 'http"://www.apache.org/licenses/LICENSE-2.0.html'
-"host: http://176.112.216.95":50501
+    url: 'http"://www.apache.org/licenses/LICENSE-2.0.html'
+host: http://176.112.216.95:50501
 tags:
   - name: Packages In Date Range
     description: Получение телематических данных
     externalDocs:
       description: Просмотреть метод можно по 
-      "url: http://176.112.216.95":50501
+      url: http://176.112.216.95:50501
   - name: Crash Records
     description: Получение данных о ДТП
     externalDocs:
       description: Просмотреть метод можно по 
-      "url: http://176.112.216.95":50501
+      url: http://176.112.216.95:50501
   - name: Device Location
     description: Получение местоположения указанных ТМУ
     externalDocs:
       description: Просмотреть метод можно по 
-      "url: http://176.112.216.95":50501
+      url: http://176.112.216.95:50501
   - name: Track Recording
     description: Отправка команд на ТМУ для включения/отключения записи трека ТС
     externalDocs:
       description: Просмотреть метод можно по 
-      "url: http://176.112.216.95":50501
+      url: http://176.112.216.95:50501
   - name: Track Recorded Packages
     description: Получение записей трека для TС
     externalDocs:
       description: Просмотреть метод можно по 
-      "url: http://176.112.216.95":50501  
+      url: http://176.112.216.95":0501  
   - name: Telematic laststate
     description: Получение координат объекта или группы объектов с историей за определенный период времени
     externalDocs:
       description: Просмотреть метод можно по
-      "url: http://176.112.216.95":50501
+      url: http://176.112.216.95:50501
   - name: Telematic
     description: Получение координат объекта или группы объектов 
     externalDocs:
       description: Просмотреть метод можно по
-      "url: http://176.112.216.95":50501
+      url: http://176.112.216.95:50501
   - name: Bydevicecodes
     description: Получение информации об объекте или группе объектов
     externalDocs:
       description: Просмотреть метод можно по
-      "url: http://176.112.216.95":50501
+      url: http://176.112.216.95:50501
   - name: Package
     description: Обработка данных с устройства или нескольких устройств за указанный промежуток времени
     externalDocs:
       description: Просмотреть метод можно по
-      "url: http://176.112.216.95":50501
+      url: http://176.112.216.95:50501
   - name: Countpackage
     description:  Количество обработанных пакетов за указанный период времени
     externalDocs:
       description: Просмотреть метод можно по
-      "url: http://176.112.216.95":50501
+      url: http://176.112.216.95:50501
 paths:
   /Api/telematicparsingelement/Package?deviceCode=&start=&end=&limit:
     get:
