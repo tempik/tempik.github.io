@@ -534,12 +534,12 @@ components:
           type: string
           format: date-time
           description: Дата и время ТМУ в момент отправки пакета
-          "example: '2017-10-21T02:41":52Z' 
+          example: '2017-10-21T02:41:52Z' 
         ReceivedTime:
           type: string
           format: date-time
           description: Дата и время сервера в момент записи пакета
-          "example: '2017-10-21T06:38":48.212Z'
+          example: '2017-10-21T06:38:48.212Z'
         DeviceCode:
           type: string
           description: Код ТМУ
@@ -628,12 +628,12 @@ components:
           type: string
           format: date-time
           description: Дата и время ТМУ в момент отправки пакета
-          "example: '2017-10-20T14:32":57Z' 
+          example: '2017-10-20T14:32:57Z' 
         ReceivedTime:
           type: string
           format: date-time
           description: Дата и время сервера в момент записи пакета
-          "example: '2017-10-20T15:16":37.775Z'
+          example: '2017-10-20T15:16:37.775Z'
         DeviceCode:
           type: string
           description: Код ТМУ
@@ -701,12 +701,12 @@ components:
           type: string
           format: date-time
           description: Дата и время ТМУ в момент отправки пакета
-          "example: '2017-10-21T02:41":52Z' 
+          example: '2017-10-21T02:41:52Z' 
         ReceivedTime:
           type: string
           format: date-time
           description: Дата и время сервера в момент записи пакета
-          "example: '2017-10-21T06:38":48.212Z'
+          example: '2017-10-21T06:38:48.212Z'
         DeviceCode:
           type: string
           description: Код ТМУ
@@ -796,12 +796,12 @@ components:
           type: string
           format: date-time
           description: Дата и время ТМУ в момент отправки пакета
-          "example: '2017-10-21T02:41":52Z' 
+          example: '2017-10-21T02:41:52Z' 
         ReceivedTime:
           type: string
           format: date-time
           description: Дата и время сервера в момент записи пакета
-          "example: '2017-10-21T06:38":48.212Z'
+          example: '2017-10-21T06:38:48.212Z'
         DeviceCode:
           type: string
           description: Код ТМУ
@@ -1002,12 +1002,12 @@ components:
           type: string
           format: date-time
           description: Время устройства
-          "example: '2018-03-28T16:21":09Z'
+          example: '2018-03-28T16:21:09Z'
         receivedTime:
           type: string
           format: date-time
           description: Полученное время
-          "example: '2018-03-28T16:21":16.364Z'
+          example: '2018-03-28T16:21:16.364Z'
         version:
           type: string
           description: Версия 
@@ -1432,7 +1432,7 @@ components:
           type: string
           format: date-time
           description: Время создания
-          "example: '2018-02-01T14:02":52Z'
+          example: '2018-02-01T14:02:52Z'
       xml:
         name: DeviceId
     ExtendedData:
@@ -1600,7 +1600,7 @@ components:
           type: string
           format: date-time
           description: Время создания
-          "example: '2018-01-12T21:10":42Z'
+          example: '2018-01-12T21:10:42Z'
       xml:
         name: Xgeo_Goezones
     Bydevicecodes:
@@ -1656,12 +1656,12 @@ components:
           type: string
           format: date-time
           description: Начала обработки большого количества девайсов/данных 
-          "example: "2018-03-28T00:00":00"
+          example: "2018-03-28T00:00:00"
         end:
           type: string
           format: date-time
           description: Конец обработки большого количества девайсов/данных
-          "example: "2018-03-28T14:00":00"
+          example: "2018-03-28T14:00:00"
         deviceCode:
           type: string
           description: Код устройства
@@ -1702,12 +1702,12 @@ components:
           type: string
           format: date-time
           description: Время на устройстве
-          "example: '2018-03-27T21:01":07Z'
+          example: '2018-03-27T21:01:07Z'
         serverTime:
           type: string
           format: date-time
           description: Время на сервере
-          "example: '2018-03-27T21:01":13.835Z'
+          example: '2018-03-27T21:01:13.835Z'
         endPoint:
           type: string
           description: Конечная точка
@@ -1852,12 +1852,12 @@ components:
           type: string
           format: date-time
           description: Начала обработки 
-          "example: "2018-03-28T00:00":00"
+          example: "2018-03-28T00:00:00"
         end:
           type: string
           format: date-time
           description: Конец обработки 
-          "example: "2018-03-28T14:00":00"
+          example: "2018-03-28T14:00:00"
         deviceCode:
           type: string
           description: Код устройства
@@ -1898,12 +1898,12 @@ components:
           type: string
           format: date-time
           description: Время на устройстве
-          "example: '2018-03-27T21:01":07Z'
+          example: '2018-03-27T21:01:07Z'
         serverTime:
           type: string
           format: date-time
           description: Дата и время записи данных на сервере
-          "example: '2018-03-27T21:01":13.835Z'
+          example: '2018-03-27T21:01:13.835Z'
         endPoint:
           type: string
           description: Парсер обработки данных
