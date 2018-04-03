@@ -2146,7 +2146,7 @@ components:
           example: 0
       xml:
         name: AnalogSensor
-    Device::
+    Device:
       type: object
       required: [
         Value]
