@@ -1981,15 +1981,15 @@ components:
         Device:Moving:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Data sent from archive:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Geopos:Incorrect сoordinates:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Geopos:Total mileage:
           type: array
           items:
@@ -1997,35 +1997,35 @@ components:
         Device:Plug 1 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Plug 2 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Plug 3 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Plug 4 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Plug 5 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Plug 6 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Plug 7 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Plug 8 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Geopos:VDOP:
           type: array
           items:
@@ -2033,43 +2033,43 @@ components:
         Device:GLONASS positioning used:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:GPS positioning used:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Output plug 1 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Output plug 2 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Output plug 3 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Output plug 4 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Output plug 5 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Output plug 6 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Output plug 7 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Output plug 8 status:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         Device:Plug 1 counter:
           type: array
           items:
@@ -2097,7 +2097,7 @@ components:
         LLS 0:Error reading value:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         LLS 0:Level:
           type: array
           items:
@@ -2105,7 +2105,7 @@ components:
         LLS 1:Error reading value:
           type: array
           items:
-            $ref: '#/components/schemas/Device:'
+            $ref: '#/components/schemas/Device'
         EgtsSdrTypes:
           type: array
           items:
