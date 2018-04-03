@@ -1,0 +1,2245 @@
+openapi: 3.0.0
+# Added by API Auto Mocking Plugin
+info:
+  description: Описание методов Dev API
+  version: "1.0.0"
+  title: Методы Dev API
+  contact:
+    email: A.Tenyakov@t1-group.ru
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: http://176.112.216.95:50501
+tags:
+  - name: Packages In Date Range
+    description: Получение телематических данных
+    externalDocs:
+      description: Просмотреть метод можно по 
+      url: http://176.112.216.95:50501
+  - name: Crash Records
+    description: Получение данных о ДТП
+    externalDocs:
+      description: Просмотреть метод можно по 
+      url: http://176.112.216.95:50501
+  - name: Device Location
+    description: Получение местоположения указанных ТМУ
+    externalDocs:
+      description: Просмотреть метод можно по 
+      url: http://176.112.216.95:50501
+  - name: Track Recording
+    description: Отправка команд на ТМУ для включения/отключения записи трека ТС
+    externalDocs:
+      description: Просмотреть метод можно по 
+      url: http://176.112.216.95:50501
+  - name: Track Recorded Packages
+    description: Получение записей трека для TС
+    externalDocs:
+      description: Просмотреть метод можно по 
+      url: http://176.112.216.95:50501  
+  - name: Telematic laststate
+    description: Получение координат объекта или группы объектов с историей за определенный период времени
+    externalDocs:
+      description: Просмотреть метод можно по
+      url: http://176.112.216.95:50501
+  - name: Telematic
+    description: Получение координат объекта или группы объектов 
+    externalDocs:
+      description: Просмотреть метод можно по
+      url: http://176.112.216.95:50501
+  - name: Bydevicecodes
+    description: Получение информации об объекте или группе объектов
+    externalDocs:
+      description: Просмотреть метод можно по
+      url: http://176.112.216.95:50501
+  - name: Package
+    description: Обработка данных с устройства или нескольких устройств за указанный промежуток времени
+    externalDocs:
+      description: Просмотреть метод можно по
+      url: http://176.112.216.95:50501
+  - name: Countpackage
+    description:  Количество обработанных пакетов за указанный период времени
+    externalDocs:
+      description: Просмотреть метод можно по
+      url: http://176.112.216.95:50501
+paths:
+  /Api/telematicparsingelement/Package?deviceCode=&start=&end=&limit:
+    get:
+      tags:
+        - Package
+      summary: Получение навигационных сообщений для одного ТМУ за период
+      description: Метод предоставляет документы из коллекции TelematicParsingElement за выбранный период для одного ТМУ, доступен всем пользователям, авторизация по ключу
+      operationId: getPackage
+      parameters:
+        - name: deviceCode
+          in: query
+          description: Идентификатор ТМУ
+          required: true
+          schema:
+            type: string
+        - name: start
+          in: query
+          description: Локальное время начала периода в формате POSIX-время. Время клиента
+          required: true
+          schema:
+            type: dateTime
+        - name: end
+          in: query
+          description: Локальное время окончания периода в формате POSIX-время. Время клиента
+          required: true
+          schema:
+            type: dateTime
+        - name: limit
+          in: query
+          description: Кол-во записей, полученных за один запрос
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TelematicParsingElement'
+        'Not Found':
+          description: DeviceCode отсутствует в системе
+        'Bad Fields':
+          description: Start, end не корректные 
+        'Bad Fields - 2':
+          description: Start меньше end
+  /Api/telematicparsingelement/countpackage?deviceCode=&start=&end=:
+    get:
+      tags:
+        - Countpackage
+      summary: Получение кол-во записей навигационных сообщений для одного ТМУ за период
+      description: Метод возвращает количество навигационных сообщений из коллекции TelematicParsingElement за выбранный период для одного ТМУ, доступен всем пользователям, авторизация по ключу
+      operationId: getCountpackage
+      parameters:
+        - name: deviceCode
+          in: query
+          description: Идентификатор ТМУ
+          required: true
+          schema:
+            type: string
+        - name: start
+          in: query
+          description: Время начала периода в формате POSIX-время. Время клиента
+          required: true
+          schema:
+            type: dateTime
+        - name: end
+          in: query
+          description: Время окончания периода в формате POSIX-время. Время клиента
+          required: true
+          schema:
+            type: dateTime
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Countpackage'
+        'Not Found':
+          description: DeviceCode отсутствует в системе
+        'Bad Fields':
+          description: Start, end не корректные 
+        'Bad Fields - 2':
+          description: Start меньше end
+  /Api/deviceTelematicData/TrackRecording?MonitoringState={MonitoringState}:
+    post:
+      tags:
+        - Track Recording
+      summary: Отправка команды включения/отключения записи трека для выбранного ТС (специальный архив)
+      description: Метод отправляет на ТМУ команду включения/выключения трека в системе для ТМУ из коллекций DeviceFullRecords и СrashInjuries, доступен всем пользователям, авторизация по ключу
+      operationId: postTrackRecording
+      parameters:
+        - name: MonitoringState
+          in: query
+          description: Статус мониторинга (вкл/выкл)
+          required: true
+          schema:
+            type: string
+        - name: ImeiList
+          in: query
+          description: Структура со списком devicecode ТМУ
+          required: true
+          schema:
+            type: array
+            items: 
+              type: string
+      responses:
+        '200':
+          content:
+          description: OK
+        'BadRequest':
+          description: Не задано ни одного ТМY
+  /Api/deviceTelematicData/TrackRecordedPackages:
+    get:
+      tags:
+        - Track Recorded Packages
+      summary: Получение записей трека для выбранного ТС из специального архива в JSON и бинарном форматах
+      description: Метод возвращает количество сообщений за выбранный период для одного ТМУ из коллекции DeviceFullRecords и СrashInjuries, доступен всем пользователям, авторизация по ключу
+      operationId: getTrackRecordedPackages
+      parameters:
+        - name: from
+          in: query
+          description: Дата и время начала периода в формате POSIX-время. Время клиента
+          required: true
+          schema:
+            type: dateTime
+        - name: to
+          in: query
+          description: Дата и время окончания периода в формате POSIX-время. Время клиента
+          required: true
+          schema:
+            type: dateTime
+        - name: limit
+          in: query
+          description: Ограничение по максимальному числу позиций
+          required: true
+          schema:
+            type: dateTime
+        - name: skip
+          in: query
+          description: Количество пропущенных позиций относительно начала списка позиций
+          required: true
+          schema:
+            type: dateTime
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackRecordedPackages'
+        'BadRequest':
+          description: Не задано ни одного ТМY
+        'There are no track recording devices':
+          description: Нет треков за указанный период
+  /Api/deviceTelematicData/DeviceLocation:
+    post:
+      tags:
+        - Device Location
+      summary: Возвращает текущие позиции всех заданных ТМУ из коллекции DeviceFullRecords
+      description: Метод доступен всем пользователям, авторизация по ключу
+      operationId: postDeviceLocation
+      parameters:
+        - name: from
+          in: query
+          description: Список devicecode ТМУ
+          required: true
+          schema:
+            type: array
+            items: 
+              type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceLocation'
+        'BadRequest':
+          description: Не задано ни одного ТМY
+  /Api/deviceTelematicData/PackagesInDateRange:
+    get:
+      tags:
+        - Packages In Date Range
+      summary: Возвращает все записи record-ов за указанный период из коллекции DeviceFullRecords
+      description: Метод доступен всем пользователям, авторизация по ключу
+      operationId: getPackagesInDateRange
+      parameters:
+        - name: from
+          in: query
+          description: Дата и время начала периода в формате POSIX-время. Время клиента
+          required: true
+          schema:
+            type: dateTime
+        - name: to
+          in: query
+          description: Дата и время окончания периода в формате POSIX-время. Время клиента
+          required: true
+          schema:
+            type: dateTime
+        - name: limit
+          in: query
+          description: Ограничение по максимальному числу позиций
+          required: true
+          schema:
+            type: dateTime
+        - name: skip
+          in: query
+          description: Количество пропущенных позиций относительно начала списка позиций
+          required: true
+          schema:
+            type: dateTime
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PackagesInDateRange'
+        'BadRequest':
+          description: Дата начала периода позже даты окончания
+  /Api/deviceTelematicData/CrashRecords:
+    get:
+      tags:
+        - Crash Records
+      summary: Возвращает список всех ДТП в Системе за указанный период из коллекций СrashInjuries и DeviceFullRecords
+      description: Метод доступен всем пользователям, авторизация по ключу
+      operationId: getPackagesInDateRange
+      parameters:
+        - name: from
+          in: query
+          description: Дата и время начала периода в формате POSIX-время. Время клиента
+          required: true
+          schema:
+            type: dateTime
+        - name: to
+          in: query
+          description: Дата и время окончания периода в формате POSIX-время. Время клиента
+          required: true
+          schema:
+            type: dateTime
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CrashRecords'
+        'BadRequest':
+          description: Дата начала периода позже даты окончания
+  /api/telematic/laststate:
+    post:
+      tags:
+        - Telematic laststate
+      summary: Выдает новые координаты одного или списка объектов с историей
+      description: Метод доступен всем пользователям, авторизация по ключу
+      operationId: postLaststate
+      parameters:
+        - name: deviceCodes
+          in: query
+          description: Код устройства или устройств
+          required: true
+          schema:
+            type: array
+            items: 
+              type: string
+      responses:
+        '200':
+          description: Координаты получены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Laststate'
+        '400':
+          description: Devices codes are empty
+  /api/telematic/:
+    post:
+      tags:
+        - Telematic 
+      summary: Выводит новые (текущие) координаты объекта
+      description: Метод доступен всем пользователям, авторизация по ключу
+      operationId: postTelematic
+      parameters:
+        - name: from
+          in: query
+          description: Время отчета "от"
+          required: true
+          schema:
+            type: dateTime
+        - name: to
+          in: query
+          description: Время отчета "до"
+          required: true
+          schema:
+            type: dateTime
+        - name: deviceCodes
+          in: query
+          description: Код устройства
+          required: true
+          schema:
+            type: array
+            items: 
+              type: string
+      responses:
+        '200':
+          description: Координаты получены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Laststate'
+        '400':
+          description: Start date can not be greater end date
+        '500':
+          description: Не высылает данные
+  /api/Resource/bydevicecodes:
+    post:
+      tags:
+        - Bydevicecodes 
+      summary: Получение информации об объекте, на котором находится устройство
+      description: Метод доступен всем пользователям, авторизация по ключу
+      operationId: postBydevicecodes
+      parameters: 
+        - name: deviceCodes
+          in: query
+          description: Код устройства
+          required: true
+          schema:
+            type: array
+            items: 
+              type: string
+      responses:
+        '200':
+          description: Данные получены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bydevicecodes'    
+        '400':
+          description: Devices codes are empty
+  /api/telematicparsingelement/package:
+    post:
+      tags:
+        - Package 
+      summary: Создает список данных по большому количеству девайсов/данных
+      description: Метод доступен всем пользователям, авторизация по ключу
+      operationId: postPackage
+      parameters:
+        - name: start
+          in: query
+          description: Время начала отчета 
+          required: true
+          schema:
+            type: dateTime
+        - name: end
+          in: query
+          description: Время окончания отчета
+          required: true
+          schema:
+            type: dateTime
+        - name: deviceCodes
+          in: query
+          description: Код устройства
+          required: true
+          schema:
+            type: array
+            items: 
+              type: string
+      responses:
+        '200':
+          description: Данные по устройствам получены
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Package'  
+        '400':
+          description: Start date can not be greater end date
+        '500':
+          description: Не высылает данные
+  /api/telematicparsingelement/countpackage:
+    post:
+      tags:
+        - Countpackage 
+      summary: Выдает число документов по одному или нескольким БНСО за период времени
+      description: Метод доступен всем пользователям, авторизация по ключу
+      operationId: postPackage
+      parameters:
+        - name: start 
+          in: query
+          description: Дата начала периода
+          required: true
+          schema:
+            type: dateTime
+        - name: end
+          in: query
+          description: Дата окончания периода
+          required: true
+          schema:
+           type: dateTime
+        - name: deviceCodes
+          in: query
+          description: Код устройства или группы устройств
+          required: true
+          schema:
+            type: array
+            items: 
+              type: string
+      responses:
+        '200':
+          description: Информация о количестве пакетов получена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Countpackages'  
+        '400':
+          description: Start date can not be greater end date
+        '500':
+          description: Не высылает данные
+components:
+  schemas:
+    Countpackages: 
+      type: object
+      required: [
+        Messages_Count]
+      properties:
+        Messages_Count:
+          type: string
+          description: Количество документов сообщений в коллекции TelematicParsingElement для выбранного ТМУ
+          example: '8538'   
+      xml:
+        name: Countpackages    
+    TrackRecordedPackages:
+      type: object
+      required: [
+        DeviceTime
+        ReceivedTime
+        DeviceCode
+        Longitude
+        Latitude
+        Satellites
+        Speed
+        Course
+        xdelta_Mileage
+        Ignition
+        AccelerationX
+        AccelerationY
+        AccelerationZ
+        AccelerationAvgX
+        AccelerationAvgY
+        AccelerationAvgZ
+        AccelerationDurationX
+        AccelerationDurationY
+        AccelerationDurationZ
+        ]
+      properties:
+        DeviceTime:
+          type: string
+          format: dateTime
+          description: Дата и время ТМУ в момент отправки пакета
+          example: '2017-10-21T02:41:52Z' 
+        ReceivedTime:
+          type: string
+          format: dateTime
+          description: Дата и время сервера в момент записи пакета
+          example: '2017-10-21T06:38:48.212Z'
+        DeviceCode:
+          type: string
+          format: dateTime
+          description: Код ТМУ
+          example: "510038"
+        Longitude:
+          type: integer
+          description: Долгота
+          example: 55671951
+        Latitude:
+          type: integer
+          description: Широта
+          example: 37636470
+        Satellites:
+          type: integer
+          description: Спутники (кол-во)
+          example: 16
+        Speed:
+          type: integer
+          description: Скорость
+          example: 0
+        Course:
+          type: integer
+          description: Направление
+          example: 246
+        Ignition:
+          type: boolean
+          description: Зажигание
+          example: true
+        xdelta_Mileage:
+          type: integer
+          description: Пробег (разница между текущей и предыдущей позициями)
+          example: 166564
+        AccelerationX:
+          type: integer
+          description: Ускорение по оси X
+          example: 0
+        AccelerationY:
+          type: integer
+          description: Ускорение по оси Y
+          example: 0
+        AccelerationZ:
+          type: integer
+          description: Ускорение по оси Z
+          example: 0
+        AccelerationAvgX:
+          type: integer
+          description: Средн. ускорение по оси X
+          example: 0
+        AccelerationAvgY:
+          type: integer
+          description: Средн. ускорение по оси Y
+          example: 0
+        AccelerationAvgZ:
+          type: integer
+          description: Средн. ускорение по оси Z
+          example: 0
+        AccelerationDurationX:
+          type: integer
+          description: Продолжительность ускорения по оси X
+          example: 0
+        AccelerationDurationY:
+          type: integer
+          description: Продолжительность ускорения по оси Y
+          example: 0
+        AccelerationDurationZ:
+          type: integer
+          description: Продолжительность ускорения по оси Z
+          example: 0
+      xml:
+        name: PackagesInDateRange
+    DeviceLocation:
+      type: object
+      required: [
+        DeviceTime
+        ReceivedTime
+        DeviceCode
+        Longitude
+        Latitude
+        Altitude
+        Satellites
+        Speed
+        Course
+        ]
+      properties:
+        DeviceTime:
+          type: string
+          format: dateTime
+          description: Дата и время ТМУ в момент отправки пакета
+          example: '2017-10-20T14:32:57Z' 
+        ReceivedTime:
+          type: string
+          format: dateTime
+          description: Дата и время сервера в момент записи пакета
+          example: '2017-10-20T15:16:37.775Z'
+        DeviceCode:
+          type: string
+          format: dateTime
+          description: Код ТМУ
+          example: '431572'
+        Longitude:
+          type: integer
+          description: Долгота
+          example: 55708869
+        Latitude:
+          type: integer
+          description: Широта
+          example: 37653751
+        Altitude:
+          type: integer
+          description: Высота
+          example: 141000000
+        Speed:
+          type: integer
+          description: Скорость
+          example: 0
+        Course:
+          type: integer
+          description: Направление
+          example: 351
+      xml:
+        name: DeviceLocation
+    CrashElements:
+      type: object
+      required: [
+        AccelerationX
+        AccelerationY
+        AccelerationZ
+        ]
+      properties:
+        AccelerationX:
+          type: integer
+          description: Ускорение по оси X
+          example: -123
+        AccelerationY:
+          type: integer
+          description: Ускорение по оси Y
+          example: -79
+        AccelerationZ:
+          type: integer
+          description: Ускорение по оси Z. Установлено 0
+          example: 998 
+      xml:
+        name: CrashElements
+    CrashRecords:
+      type: object
+      required: [
+        DeviceTime
+        ReceivedTime
+        DeviceCode
+        Longitude
+        Latitude
+        Altitude
+        Satellites
+        Speed
+        Course
+        CrashElements
+        ]
+      properties:
+        DeviceTime:
+          type: string
+          format: dateTime
+          description: Дата и время ТМУ в момент отправки пакета
+          example: '2017-10-21T02:41:52Z' 
+        ReceivedTime:
+          type: string
+          format: dateTime
+          description: Дата и время сервера в момент записи пакета
+          example: '2017-10-21T06:38:48.212Z'
+        DeviceCode:
+          type: string
+          format: dateTime
+          description: Код ТМУ
+          example: "510038"
+        Longitude:
+          type: integer
+          description: Долгота
+          example: 55671951
+        Latitude:
+          type: integer
+          description: Широта
+          example: 37636470
+        Altitude:
+          type: integer
+          description: Высота
+          example: 0
+        Satellites:
+          type: integer
+          description: Спутники (кол-во)
+          example: 16
+        Speed:
+          type: integer
+          description: Скорость
+          example: 0
+        Course:
+          type: integer
+          description: Направление
+          example: 246
+        crashElements:
+          type: array
+          description: Массив ускорений
+          items:
+            $ref: '#/components/schemas/CrashElement'
+      xml:
+        name: CrashRecords
+    CrashElement:
+      type: object
+      required: [
+        AccelerationX
+        AccelerationY
+        AccelerationZ
+        ]
+      properties:
+        AccelerationX:
+          type: integer
+          description: Ускорение по оси X
+          example: -123
+        AccelerationY:
+          type: integer
+          description: Ускорение по оси Y
+          example: -79
+        AccelerationZ:
+          type: integer
+          description: Ускорение по оси Z. Установлено 0
+          example: 998 
+      xml:
+        name: CrashElement
+    PackagesInDateRange:
+      type: object
+      required: [
+        DeviceTime
+        ReceivedTime
+        DeviceCode
+        Longitude
+        Latitude
+        Altitude
+        Satellites
+        Speed
+        Course
+        xdelta_Mileage
+        Ignition
+        AccelerationX
+        AccelerationY
+        AccelerationZ
+        AccelerationMaxX
+        AccelerationMaxY
+        AccelerationMaxZ
+        AccelerationAvgX
+        AccelerationAvgY
+        AccelerationAvgZ
+        AccelerationDurationX
+        AccelerationDurationY
+        AccelerationDurationZ
+        ]
+      properties:
+        DeviceTime:
+          type: string
+          format: dateTime
+          description: Дата и время ТМУ в момент отправки пакета
+          example: '2017-10-21T02:41:52Z' 
+        ReceivedTime:
+          type: string
+          format: dateTime
+          description: Дата и время сервера в момент записи пакета
+          example: '2017-10-21T06:38:48.212Z'
+        DeviceCode:
+          type: string
+          format: dateTime
+          description: Код ТМУ
+          example: "510038"
+        Longitude:
+          type: integer
+          description: Долгота
+          example: 55671951
+        Latitude:
+          type: integer
+          description: Широта
+          example: 37636470
+        Altitude:
+          type: integer
+          description: Высота
+          example: 0
+        Satellites:
+          type: integer
+          description: Спутники (кол-во)
+          example: 16
+        Speed:
+          type: integer
+          description: Скорость
+          example: 0
+        Course:
+          type: integer
+          description: Направление
+          example: 246
+        Ignition:
+          type: boolean
+          description: Зажигание
+          example: true
+        xdelta_Mileage:
+          type: integer
+          description: Пробег (разница между текущей и предыдущей позициями)
+          example: 166564
+        AccelerationX:
+          type: integer
+          description: Ускорение по оси X
+          example: 0
+        AccelerationY:
+          type: integer
+          description: Ускорение по оси Y
+          example: 0
+        AccelerationZ:
+          type: integer
+          description: Ускорение по оси Z
+          example: 0
+        AccelerationMaxX:
+          type: integer
+          description: Макс. ускорение по оси X
+          example: 0
+        AccelerationMaxY:
+          type: integer
+          description: Макс. ускорение по оси Y
+          example: 0
+        AccelerationMaxZ:
+          type: integer
+          description: Макс. ускорение по оси Z
+          example: 0
+        AccelerationAvgX:
+          type: integer
+          description: Средн. ускорение по оси X
+          example: 0
+        AccelerationAvgY:
+          type: integer
+          description: Средн. ускорение по оси Y
+          example: 0
+        AccelerationAvgZ:
+          type: integer
+          description: Средн. ускорение по оси Z
+          example: 0
+        AccelerationDurationX:
+          type: integer
+          description: Продолжительность ускорения по оси X
+          example: 0
+        AccelerationDurationY:
+          type: integer
+          description: Продолжительность ускорения по оси Y
+          example: 0
+        AccelerationDurationZ:
+          type: integer
+          description: Продолжительность ускорения по оси Z
+          example: 0
+      xml:
+        name: PackagesInDateRange
+    Laststate:
+      type: object
+      required: [
+        id
+        rawId
+        deviceTime
+        receivedTime
+        version
+        deviceCode
+        deviceId
+        extendedData
+        xgeo_Address
+        xgeo_Speedlimit
+        xdelta_Distance
+        xdelta_Mileage
+        xgeo_Goezones
+        xgeo_SafetyObjects
+        hasRoadEvents
+        longitude
+        longitude_upd
+        latitude
+        latitude_upd
+        ignition
+        ignition_upd
+        course
+        course_upd
+        mileage
+        mileage_upd
+        satellites
+        satellites_upd
+        speed
+        speed_upd
+        accelerationX
+        accelerationX_upd
+        accelerationY
+        accelerationY_upd
+        accelerationDurationX
+        accelerationDurationX_upd
+        accelerationDurationY
+        accelerationDurationY_upd
+        fuelLevel
+        fuelLevel_upd
+        fuelCAN
+        fuelCAN_upd
+        fuelSpent
+        fuelSpent_upd
+        fuel
+        fuel_upd
+        fuelLevel2
+        fuelLevel2_upd
+        fuelLevel3
+        fuelLevel3_upd
+        geoLocationSignalLevel
+        geoLocationSignalLevel_upd
+        gsmSignalLevel
+        gsmSignalLevel_upd
+        voltage
+        voltage_upd
+        voltageAlarm
+        voltageAlarm_upd
+        batteryLevel
+        batteryLevel_upd
+        batteryLevelAlarm
+        batteryLevelAlarm_upd
+        doorsSignal
+        doorsSignal_upd
+        hoodSignal
+        hoodSignal_upd
+        trunkSignal
+        trunkSignal_upd
+        rpm
+        rpm_upd
+        temperature1
+        temperature1_upd
+        temperature2
+        temperature2_upd
+        temperature3
+        temperature3_upd
+        odometr
+        odometr_upd
+        panicButton
+        panicButton_upd
+        button1
+        button1_upd
+        button2
+        button2_upd
+        button3
+        button3_upd
+        button4
+        button4_upd
+        heaterSignal
+        heaterSignal_upd
+        leftBackDoor
+        leftBackDoor_upd
+        leftFrontDoor
+        leftFrontDoor_upd
+        rightBackDoor
+        rightBackDoor_upd
+        rightFrontDoor
+        rightFrontDoor_upd
+        ]
+      properties:
+        id:
+          type: string
+          description: Идентификатор
+          example: 5abbc0fe895ff10e401b7a5b 
+        rawId:
+          type: string
+          description: Идентификатор бинарных параметров
+          example: 2ae94199-a428-470f-8c60-b4a5ac25c6cb
+        deviceTime:
+          type: string
+          format: dateTime
+          description: Время устройства
+          example: '2018-03-28T16:21:09Z'
+        receivedTime:
+          type: string
+          format: dateTime
+          description: Полученное время
+          example: '2018-03-28T16:21:16.364Z'
+        version:
+          type: string
+          description: Версия 
+          example: null
+        deviceCode:
+          type: string
+          description: Код устройства
+          example: 512018
+        deviceId:
+          type: array
+          description: Данные устройства
+          items:
+            $ref: '#/components/schemas/DeviceId'
+        extendedData:
+          type: array
+          description: Расширенные данные
+          items:
+            $ref: '#/components/schemas/ExtendedData'
+        xgeo_Address:
+          type: string
+          description: Адрес местонахожения объекта
+          example: г. Москва, ш. Дмитровское, д.108, стр.2
+        xgeo_Speedlimit:
+          type: float
+          description: Ограничение скорости, которое определяется по карте
+          example: 20
+        xdelta_Distance:
+          type: float
+          description: Расчетное значение пробега по координатам
+          example: 0
+        xdelta_Mileage:
+          type: float
+          description: Пробег с CAN или ДУТ в зависимости от настройки маппинга в км
+          example: 1813707.94
+        xgeo_Goezones:
+          type: array
+          description: Данные по геозонам
+          items:
+            $ref: '#/components/schemas/Xgeo_Goezones'
+        xgeo_SafetyObjects:
+          type: object
+          description: Объекты на карте 
+        hasRoadEvents:
+          type: string
+          example: null
+        longitude:
+          type: float
+          description: Координаты долготы
+          example: 37.547721862792969
+        longitude_upd:
+          type: boolean
+          description: Координаты обновлены, если true; старое значение координат, если false 
+          example: true
+        latitude:
+          type: float
+          description: Координаты широты
+          example: 55.886238098144531
+        latitude_upd:
+          type: boolean
+          description: Координаты обновлены, если true; старое значение координат, если false
+          example: true
+        ignition:
+          type: boolean
+          description: Зажигание включено, если true; иначе false
+          example: false
+        ignition_upd:
+          type: boolean
+          description: Статус зажигания не обновлен, если false; иначе true
+          example: true
+        course:
+          type: float
+          description: Значение по курсу в градусах
+          example: 285
+        course_upd:
+          type: boolean
+          description: Значение по курсу обновлено, если true; иначе false
+          example: true
+        mileage:
+          type: float
+          description: Значение пробега к км
+          example: 20542318
+        mileage_upd:
+          type: boolean
+          description: Значение пробега обновлено, если true; иначе false
+          example: true
+        satellites:
+          type: float
+          description: Количество спутников, с которых поступает информация
+          example: 18
+        satellites_upd:
+          type: boolean
+          description: Значение количества спутников обнавлено, если true, наче false
+          example: true
+        speed:
+          type: float
+          description: Значение скорости в км/час
+          example: 0
+        speed_upd:
+          type: boolean
+          description: Обновленное значение скорости, если true, иначе false
+          example: true
+        accelerationX:
+          type: float
+          description: Значение ускорения по оси Х в mG
+          example: null
+        accelerationX_upd:
+          type: boolean
+          description: Старое занчение по оси Х, если false, иначе true
+          example: false
+        accelerationY:
+          type: float
+          description: Значение ускорения по оси У в mG
+          example: null
+        accelerationY_upd:
+          type: boolean
+          description: Старое занчение по оси У, если false, иначе true
+          example: false
+        accelerationDurationX:
+          type: float
+          description: Значение продолжительности ускорения по оси Х в мсек, обнуляется после того, как прекращается воздействие ускорения по оси Х
+          example: null
+        accelerationDurationX_upd:
+          type: boolean
+          description: Если true, то ускорение по оси Х не равно 0, продолжает накапливаться показатель продолжительности ускорения accelerationDurationX, иначе false
+          example: false
+        accelerationDurationY:
+          type: float
+          description: Значение продолжительности ускорения по оси У в мсек, обнуляется после того, как прекращается воздействие ускорения по оси У
+          example: null
+        accelerationDurationY_upd:
+          type: boolean
+          description: Если true, то ускорение по оси У не равно 0, продолжает накапливаться показатель продолжительности ускорения accelerationDurationY, иначе false
+          example: false
+        fuelLevel:
+          type: float
+          description: Уровень топлива в баке в литрах
+          example: null
+        fuelLevel_upd:
+          type: boolean
+          description: Если true, то показатель fuelLevel обновлен, иначе false
+          example: false
+        fuelCAN:
+          type: float
+          description: Уровень топлива CAN в литрах
+          example: null
+        fuelCAN_upd:
+          type: boolean
+          description: Если true, то показатель fuelCAN обновлен, иначе false
+          example: false
+        fuelSpent:
+          type: float
+          description: Расход топлива в баке в литрах
+          example: null
+        fuelSpent_upd:
+          type: boolean
+          description: Если true, то показатель расхода топлива fuelSpent обновлен, иначе false
+          example: false
+        fuel:
+          type: float
+          description: Пользовательский уровень топлива в баке в литрах. Пользователь может отметить каккой - то датчик, как основной, с него будет взят данный показатель
+          example: null
+        fuel_upd:
+          type: boolean
+          description: Если true, то показатель пользовательского уровня топлива fuel обновлен, иначе false
+          example: false
+        fuelLevel2:
+          type: float
+          description: Дополнительный вход для подключения датчика для определения уровня топлива в баке в литрах
+          example: null
+        fuelLevel2_upd:
+          type: boolean
+          description: Если true, то показатель fuelLevel2 обновлен, иначе false
+          example: false
+        fuelLevel3:
+          type: float
+          description: Дополнительный вход для подключения датчика для определения уровня топлива в баке в литрах
+          example: null
+        fuelLevel3_upd:
+          type: boolean
+          description: Если true, то показатель fuelLevel2 обновлен, иначе false
+          example: false
+        geoLocationSignalLevel:
+          type: integer
+          description: Уровень сигнала GPS
+          example: null
+        geoLocationSignalLevel_upd:
+          type: boolean
+          description: Если true, то уровень сигнала GPS обновлен, иначе false
+          example: false
+        gsmSignalLevel:
+          type: integer
+          description: Cигнала мобильной связи
+          example: null
+        gsmSignalLevel_upd:
+          type: boolean
+          description: Если true, то уровень сигнала мобильной связи обновлен, иначе false
+          example: false
+        voltage:
+          type: integer
+          description: Напряжение питания в В
+          example: null
+        voltage_upd:
+          type: boolean
+          description: Если значение напряжения питания обновлено, то true, иначе false
+          example: false
+        voltageAlarm:
+          type: integer
+          description: Падение напряжения питания в В
+          example: null
+        voltageAlarm_upd:
+          type: boolean
+          description: Если значение падения напряжения питания обновлено, то true, иначе false
+          example: false
+        batteryLevel:
+          type: integer
+          description: Значение уровня заряда батарейки
+          example: null
+        batteryLevel_upd:
+          type: boolean
+          description: Если значение уровня заряда батарейки обновлено, то true, иначе false
+          example: false
+        batteryLevelAlarm:
+          type: integer
+          description: Значение падения уровня заряда батарейки
+          example: null
+        batteryLevelAlarm_upd:
+          type: boolean
+          description: Если значение падения уровня заряда батарейки обновлено, то true, иначе false
+          example: false
+        doorsSignal:
+          type: boolean
+          description: Датчик дверей (закрыто/открыто)
+          example: null
+        doorsSignal_upd:
+          type: boolean
+          description: Если значение с датчика дверей обновлено, то true, иначе false
+          example: false
+        hoodSignal:
+          type: boolean
+          description: Датчик капота (закрыто/открыто)
+          example: null
+        hoodSignal_upd:
+          type: boolean
+          description: Если значение с датчика капота обновлено, то true, иначе false
+          example: false
+        trunkSignal:
+          type: boolean
+          description: Датчик багажника (закрыто/открыто)
+          example: null
+        trunkSignal_upd:
+          type: boolean
+          description: Если значение с датчика багажника обновлено, то true, иначе false
+          example: false
+        rpm:
+          type: integer
+          description: Значение оборот двигателя в минуту
+          example: null
+        rpm_upd:
+          type: boolean
+          description: Если значение оборотов двигателя обновлено, то true, иначе false
+          example: false
+        temperature1:
+          type: integer
+          description: Значение с датчик температуры в градусах
+          example: null
+        temperature1_upd:
+          type: boolean
+          description: Если значение с датчик температуры обновлено, то true, иначе false
+          example: false
+        temperature2:
+          type: integer
+          description: Значение с датчик температуры в градусах
+          example: null
+        temperature2_upd:
+          type: boolean
+          description: Если значение с датчик температуры обновлено, то true, иначе false
+          example: false
+        temperature3:
+          type: integer
+          description: Значение с датчик температуры в градусах
+          example: null
+        temperature3_upd:
+          type: boolean
+          description: Если значение с датчик температуры обновлено, то true, иначе false
+          example: false
+        odometr:
+          type: integer
+          description: Пробег в км, зависящий от оборотов двигателя
+          example: null
+        odometr_upd:
+          type: boolean
+          description: Если значение пробега odometr обновлено, то true, иначе false
+          example: false
+        panicButton:
+          type: boolean
+          description: Кнопка тревоги (включена/не включена)
+          example: null
+        panicButton_upd:
+          type: boolean
+          description: Если значение panicButton не обновлено, то false, иначе true
+          example: false
+        button1:
+          type: boolean
+          description: Кнопка для присоединения любого вида датчика
+          example: null
+        button1_upd:
+          type: boolean
+          description: Если значение button1 не обновлено, то false, иначе true
+          example: false
+        button2:
+          type: boolean
+          description: Кнопка для присоединения любого вида датчика
+          example: null
+        button2_upd:
+          type: boolean
+          description: Если значение button2 не обновлено, то false, иначе true
+          example: false
+        button3:
+          type: boolean
+          description: Кнопка для присоединения любого вида датчика
+          example: null
+        button3_upd:
+          type: boolean
+          description: Если значение button3 не обновлено, то false, иначе true
+          example: false
+        button4:
+          type: boolean
+          description: Кнопка для присоединения любого вида датчика
+          example: null
+        button4_upd:
+          type: boolean
+          description: Если значение button4 не обновлено, то false, иначе true
+          example: false
+        heaterSignal:
+          type: integer
+          description: Температура подогрева в градусах
+          example: null
+        heaterSignal_upd:
+          type: boolean
+          description: Если значение температуры подогрева не обновлено, то false, иначе true
+          example: false
+        leftBackDoor:
+          type: boolean
+          description: Датчик левой задней двери (дверь открыта/дверь закрыта)
+          example: null
+        leftBackDoor_upd:
+          type: boolean
+          description: Если значение датчика левой задней двери не обновлено, то false, иначе true
+          example: false
+        leftFrontDoor:
+          type: boolean
+          description: Датчик левой передней двери (дверь открыта/дверь закрыта)
+          example: null
+        leftFrontDoor_upd:
+          type: boolean
+          description: Если значение датчика левой передней двери не обновлено, то false, иначе true
+          example: false
+        rightBackDoor:
+          type: boolean
+          description: Датчик правой задней двери (дверь открыта/дверь закрыта)
+          example: null
+        rightBackDoor_upd:
+          type: boolean
+          description: Если значение датчика правой задней двери не обновлено, то false, иначе true
+          example: false
+        rightFrontDoor:
+          type: boolean
+          description: Датчик правой передней двери (дверь открыта/дверь закрыта)
+          example: null
+        rightFrontDoor_upd:
+          type: boolean
+          description: Если значение датчика правой передней двери не обновлено, то false, иначе true
+          example: false
+      xml:
+        name: Laststate
+    DeviceId:
+      type: object
+      required: [
+        timestamp
+        machine
+        pid
+        increment
+        creationTime]
+      properties:
+        timestamp:
+          type: integer
+          description:
+          example: 1517493772
+        machine:
+          type: integer
+          example: 15217655
+        pid:
+          type: integer
+          description: пид-регулятор
+          example: 8948
+        increment:
+          type: integer
+          format: int64
+          description: Приращение
+          example: 13986335
+        creationTime:
+          type: string
+          format: date-time
+          description: Время создания
+          example: '2018-02-01T14:02:52Z'
+      xml:
+        name: DeviceId
+    ExtendedData:
+      type: object
+      required: [
+        Mileage
+        Analog_11_0
+        Analog_0_0
+        Analog_12_0
+        Analog_15_0
+        Analog_16_0
+        Analog_1_0
+        Analog_2_0
+        Analog_3_0
+        Digital_5_0
+        Digital_6_0
+        Digital_7_0
+        Digital_13_0
+        Digital_13_1
+        Analog_17_0
+        Binary_255_0_hex
+        Digital_0_0
+        Digital_2_0
+        Geopos:VDOP
+        Geopos:HDOP
+        Geopos:PDOP
+        Digital_14_0
+        xdelta_Mileage
+        Satellites
+        Geopos:Altitude meters
+        Analog_17_2]
+      properties:
+        Mileage:
+          type: integer
+          format: 64
+          description: Пробег по ТМУ в км
+          example: 20542318
+        Analog_11_0:
+          type: float
+          description: 
+          example: 25029
+        Analog_0_0:
+          type: integer
+          description: Напряжение на аналоговом входе "0" +12В , /1000 В
+          example: 11957
+        Analog_12_0:
+          type: integer
+          description: 
+          example: 4278
+        Analog_15_0:
+          type: integer
+          description: 
+          example: 40
+        Analog_16_0:
+          type: integer
+          description: Уровень топлива с ДУТ в литрах
+          example: 1000 
+        Analog_1_0:
+          type: integer
+          description: 
+          example: 11949
+        Analog_2_0:
+          type: integer
+          description: 
+          example: 11920
+        Analog_3_0:
+          type: integer
+          description: iButton
+          example: 3445
+        Digital_5_0:
+          type: boolean
+          description: 
+          example: false
+        Digital_6_0:
+          type: boolean
+          description: 
+          example: true
+        Digital_7_0:
+          type: boolean
+          description: Состояние релейного выхода (вкл/выкл)
+          example: true
+        Digital_13_0:
+          type: boolean
+          description: 
+          example: false
+        Digital_13_1:
+          type: boolean
+          description: 
+          example: false
+        Analog_17_0:
+          type: integer
+          description: Внутренняя температура ТМУ в градусах
+          example: 8190
+        Binary_255_0_hex:
+          type: integer
+          description: 
+          example: 14000000
+        Digital_0_0:
+          type: boolean
+          description: Цифровой вход 0
+          example: true
+        Digital_2_0:
+          type: boolean
+          description: Цифровой вход 2
+          example: false
+        Geopos:VDOP:
+          type: integer
+          description: 
+          example: 87
+        Geopos:HDOP:
+          type: integer
+          description: 
+          example: 63 
+        Geopos:PDOP:
+          type: integer
+          description: 
+          example: 108
+        Digital_14_0:
+          type: boolean
+          description: 
+          example: false
+        xdelta_Mileage:
+          type: flout
+          description: Пробег с CAN или ДУТ в зависимости от настройки маппинга в км
+          example: 1813707.94
+        Satellites:
+          type: integer
+          description: Количество спутников
+          example: 18
+        Geopos:Altitude meters:
+          type: integer
+          description: Показание датчика высоты в метрах
+          example: 148
+        Analog_17_2:
+          type: integer
+          description: 
+          example: 0
+      xml:
+        name: EextendedData   
+    Xgeo_Goezones:
+      type: object
+      required: [
+        timestamp
+        machine
+        pid
+        increment
+        creationTime]
+      properties:
+        timestamp:
+            type: integer
+            example: 1515791442
+        machine:
+          type: integer
+          example: 4034096
+        pid:
+          type: integer
+          example: -20728
+        increment:
+          type: integer
+          description: Приращение
+          example: 5662628
+        creationTime:
+          type: string
+          format: date-time
+          description: Время создания
+          example: '2018-01-12T21:10:42Z'
+      xml:
+        name: Xgeo_Goezones
+    Bydevicecodes:
+      type: object
+      required: [
+        id
+        name
+        mark
+        number
+        vinCode
+        garageNumber
+        description]
+      properties:
+        id:
+          type: string
+          description: Идентификатор 
+          example: 5a74491f3d8e303cb0b095f1
+        name:
+          type: string
+          description: Название транспортного средства
+          example: о548хт178
+        mark:
+          type: string
+          description: Марка транспортного средства
+          example: VOLVO
+        number:
+          type: string
+          description: Гос. номер транспортного средства
+          example: о548хт178
+        vinCode:
+          type: string
+          description: Идентификационный номер транспортного средства
+          example: null
+        garageNumber:
+          type: string
+          description: Гаражный номер транспортного средства
+          example: null
+        description:
+          type: string
+          description: Краткое описание
+          example: 512018
+      xml:
+        name: Bydevicecodes
+    Package:
+      type: object
+      required: [
+        start
+        end
+        deviceCode
+        packages]
+      properties:
+        start:
+          type: string
+          format: date-time
+          description: Начала обработки большого количества девайсов/данных 
+          example: "2018-03-28T00:00:00"
+        end:
+          type: string
+          format: date-time
+          description: Конец обработки большого количества девайсов/данных
+          example: "2018-03-28T14:00:00"
+        deviceCode:
+          type: string
+          description: Код устройства
+          example: 431575
+        packages:
+          type: array
+          description: Данные устройства
+          items:
+            $ref: '#/components/schemas/Packages'
+      xml:
+        name: Package
+    Packages:
+      type: object
+      required: [
+        id
+        deviceCode
+        protocol
+        deviceTime
+        serverTime
+        parsedPacket
+        rawId
+        endPoint
+        imei]
+      properties:
+        id:
+          type: object
+          description: Идентификатор 
+          example: 5abab11d716c9094f164b6c4
+        deviceCode:
+          type: string
+          description: Код устройства
+          example: 431575
+        protocol:
+          type: string
+          description: Протокол
+          example: ScoutOpen
+        deviceTime:
+          type: string
+          format: date-time
+          description: Время на устройстве
+          example: '2018-03-27T21:01:07Z'
+        serverTime:
+          type: string
+          format: date-time
+          description: Время на сервере
+          example: '2018-03-27T21:01:13.835Z'
+        endPoint:
+          type: string
+          description: Конечная точка
+          example: 'ScoutOpen-52038'
+        rawId:
+          type: string
+          description: Краткое описание
+          example: 'be7bade8-4afd-43a5-bd31-cd666fbfbcd0'
+        parsedPacket:
+          type: array
+          description: Данные устройства
+          items:
+            $ref: '#/components/schemas/ParsedPacket'
+        imei:
+          type: string
+          description: 
+          example: null
+      xml:
+        name: Packages
+    ParsedPacket:
+      type: object
+      required: [
+        telematicValues]
+      properties:
+        telematicValues:
+          type: array
+          description: Телематические параметры
+          items:
+            $ref: '#/components/schemas/TelematicValues'
+      xml:
+        name: ParsedPacket
+    TelematicValues:
+      type: object
+      required: [
+        GpsData
+        Mileage
+        Ignition
+        Geopos:VDOP
+        Geopos:HDOP
+        Geopos:PDOP]
+      properties:
+        GpsData:
+          type: array
+          description: Gps параметры 
+          items:
+            $ref: '#/components/schemas/GpsData'
+        Mileage:
+          type: array
+          description: Пробег с CAN и ДУТ 
+          items:
+            type: integer
+            format: int64
+            example: 41623822
+        Ignition:
+          type: array
+          description: Зажигание
+          items:
+            type: boolean
+            example: false
+        Geopos:VDOP:
+          type: array
+          description:
+          items:
+            type: integer
+            format: int64
+          example: 145
+        Geopos:HDOP:
+          type: array
+          description: 
+          items:
+            type: integer
+            format: int64
+            example: 82
+        Geopos:PDOP:
+          type: array
+          description: 
+          items:
+            type: integer
+            format: int64
+            example: 166
+      xml:
+        name: TelematicValues
+    GpsData:
+      type: object
+      required: [
+        longitude
+        latitude
+        altitude
+        speed
+        course
+        satellites]
+      properties:
+        longitude:
+          description: Значение координаты по долготе
+          type: float
+          format: float 
+          example: 37.778011322021484
+        latitude:
+          description: Значение координаты по широте
+          type: float
+          format: float 
+          example: 55.797771453857422
+        altitude:
+          description: Значение высоты над уровнем моря
+          type: float
+          format: float 
+          example: 149
+        speed:
+          description: Значение скорости 
+          type: integer
+          example: 0
+        course:
+          description: Значение по курсу
+          type: integer
+          example: 167
+        satellites:
+          description: Количество спутников 
+          type: integer
+          example: 12
+      xml:
+        name: GpsData
+    Countpackage:
+      type: object
+      required: [
+        number]
+      properties:
+        number:
+          description: Общее число пакетов, полученное с устройств из заданного списка за указанный промежуток времени
+          type: integer
+          example: 7816
+      xml:
+        name: Countpackage
+    TelematicParsingElement:
+      type: object
+      required: [
+        start
+        end
+        deviceCode
+        packages]
+      properties:
+        start:
+          type: string
+          format: date-time
+          description: Начала обработки 
+          example: "2018-03-28T00:00:00"
+        end:
+          type: string
+          format: date-time
+          description: Конец обработки 
+          example: "2018-03-28T14:00:00"
+        deviceCode:
+          type: string
+          description: Код устройства
+          example: 431575
+        packages:
+          type: array
+          description: Данные устройства
+          items:
+            $ref: '#/components/schemas/PackagesT'
+      xml:
+        name: TelematicParsingElement
+    PackagesT:
+      type: object
+      required: [
+        id
+        deviceCode
+        protocol
+        deviceTime
+        serverTime
+        parsedPacket
+        rawId
+        endPoint
+        imei]
+      properties:
+        id:
+          type: object
+          description: Идентификатор 
+          example: 5abab11d716c9094f164b6c4
+        deviceCode:
+          type: string
+          description: Код устройства
+          example: 431575
+        protocol:
+          type: string
+          description: Протокол передачи данных
+          example: ScoutOpen
+        deviceTime:
+          type: string
+          format: date-time
+          description: Время на устройстве
+          example: '2018-03-27T21:01:07Z'
+        serverTime:
+          type: string
+          format: date-time
+          description: Дата и время записи данных на сервере
+          example: '2018-03-27T21:01:13.835Z'
+        endPoint:
+          type: string
+          description: Парсер обработки данных
+          example: 'ScoutOpen-52038'
+        rawId:
+          type: string
+          description: Идентификатор (приходящий с ТМУ)
+          example: 'be7bade8-4afd-43a5-bd31-cd666fbfbcd0'
+        parsedPacket:
+          type: array
+          description: Данные устройства
+          items:
+            $ref: '#/components/schemas/ParsedPacketT'
+        imei:
+          type: string
+          description: IMEI ТМУ
+          example: null
+      xml:
+        name: PackagesT
+    ParsedPacketT:
+      type: object
+      required: [
+        telematicValues]
+      properties:
+        telematicValues:
+          type: array
+          description: Телематические параметры
+          items:
+            $ref: '#/components/schemas/TelematicValuesT'
+      xml:
+        name: ParsedPacketT
+    TelematicValuesT:
+      type: object
+      required: [
+        GpsData
+        AccelerationData
+        AnalogSensor1
+        AnalogSensor2
+        AnalogSensor3
+        Device:Moving
+        Device:Data sent from archive
+        Geopos:Incorrect сoordinates
+        Geopos:Total mileage
+        Device:Plug 1 status
+        Device:Plug 2 status
+        Device:Plug 3 status
+        Device:Plug 4 status
+        Device:Plug 5 status
+        Device:Plug 6 status
+        Device:Plug 7 status
+        Device:Plug 8 status
+        Geopos:VDOP
+        Device:GLONASS positioning used
+        Device:GPS positioning used
+        Device:Output plug 1 status
+        Device:Output plug 2 status
+        Device:Output plug 3 status
+        Device:Output plug 4 status
+        Device:Output plug 5 status
+        Device:Output plug 6 status
+        Device:Output plug 7 status
+        Device:Output plug 8 status
+        Device:Plug 1 counter
+        Device:Plug 2 counter
+        Device:Plug 3 counter
+        Device:Accelerometer X
+        Device:Accelerometer Y
+        Device:Accelerometer Z
+        LLS 0:Error reading value
+        LLS 0:Level
+        LLS 1:Error reading value
+        EgtsSdrTypes
+        Guid]
+      properties:
+        Device:Moving:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Data sent from archive:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Geopos:Incorrect сoordinates:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Geopos:Total mileage:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceValue'
+        Device:Plug 1 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Plug 2 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Plug 3 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Plug 4 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Plug 5 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Plug 6 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Plug 7 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Plug 8 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Geopos:VDOP:
+          type: array
+          items:
+            $ref: '#/components/schemas/Geopos'
+        Device:GLONASS positioning used:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:GPS positioning used:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Output plug 1 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Output plug 2 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Output plug 3 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Output plug 4 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Output plug 5 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Output plug 6 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Output plug 7 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Output plug 8 status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        Device:Plug 1 counter:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceValue'
+        Device:Plug 2 counter:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceValue'
+        Device:Plug 3 counter:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceValue'
+        Device:Accelerometer X:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceValue'
+        Device:Accelerometer Y:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceValue'
+        Device:Accelerometer Z:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceValue'
+        LLS 0:Error reading value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        LLS 0:Level:
+          type: array
+          items:
+            $ref: '#/components/schemas/DeviceValue'
+        LLS 1:Error reading value:
+          type: array
+          items:
+            $ref: '#/components/schemas/Device:'
+        EgtsSdrTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/hexString'
+        Guid:
+          type: array
+          items:
+            $ref: '#/components/schemas/hexString1'
+        GpsData:
+          type: array
+          description: Gps параметры 
+          items:
+            $ref: '#/components/schemas/GpsDataT'
+        AccelerationData:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccelerationData'
+        AnalogSensor1:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalogSensor'
+        AnalogSensor2:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalogSensor'
+        AnalogSensor3:
+          type: array
+          items:
+            $ref: '#/components/schemas/AnalogSensor'
+      xml:
+        name: TelematicValuesT
+    GpsDataT:
+      type: object
+      required: [
+        longitude
+        latitude
+        altitude
+        speed
+        course
+        satellites]
+      properties:
+        longitude:
+          description: Значение координаты по долготе
+          type: float
+          format: float 
+          example: 37.778011322021484
+        latitude:
+          description: Значение координаты по широте
+          type: float
+          format: float 
+          example: 55.797771453857422
+        altitude:
+          description: Значение высоты над уровнем моря
+          type: float
+          example: 149
+        speed:
+          description: Значение скорости 
+          type: integer
+          example: 0
+        course:
+          description: Значение по курсу
+          type: integer
+          example: 0
+        satellites:
+          description: Количество спутников 
+          type: integer
+          example: 12
+      xml:
+        name: GpsDataT
+    AccelerationData:
+      type: object
+      required: [
+        x
+        y
+        z
+        duration
+        durationX
+        durationY]
+      properties:
+        x:
+          description: Ускорение по X
+          type: float
+          example: 0
+        y:
+          description: Ускорение по Y
+          type: float 
+          example: 0
+        z:
+          description: Ускорение по Z
+          type: float 
+          example: 0
+        duration:
+          description: Продолжительность 
+          type: float
+          example: null
+        durationX:
+          description: Продолжительность по Х 
+          type: float
+          example: null
+        durationY:
+          description: Продолжительность по У
+          type: float
+          example: null
+      xml:
+        name: AccelerationData
+    AnalogSensor:
+      type: object
+      required: [
+        Number
+        Value]
+      properties:
+        Number:
+          description: Номер устройства
+          type: integer
+          example: 2
+        Value:
+          description: Значение
+          type: number
+          example: 0
+      xml:
+        name: AnalogSensor
+    Device::
+      type: object
+      required: [
+        Value]
+      properties:
+       Value:
+          description: Значение
+          type: boolean
+          example: false
+      xml:
+        name: Device
+    DeviceValue:
+      type: object
+      required: [
+        Value]
+      properties:
+       Value:
+          description: Значение
+          type: number
+          example: 0
+      xml:
+        name: DeviceValue
+    Geopos:
+      type: object
+      required: [
+        Value]
+      properties:
+       Value:
+          description: Значение
+          type: float
+          example: 0.01
+      xml:
+        name: Geopos:VDOP    
+    hexString:
+      type: object
+      required: [
+        hexString]
+      properties:
+       hexString:
+          type: string
+          example: 'POS_DATA|EXT_POS_DATA|AD_SENSORS_DATA|COUNTERS_DATA|ACCEL_DATA|ACCEL_DATA|LIQUID_LEVEL_SENSOR|LIQUID_LEVEL_SENSOR'
+      xml:
+        name: hexString    
+    hexString1:
+      type: object
+      required: [
+        hexString]
+      properties:
+       hexString:
+          type: string
+          example: '11953A8F883DD508-836C8A12'
+      xml:
+        name: hexString1
+        
